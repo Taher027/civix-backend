@@ -1,0 +1,28 @@
+model Complaint {
+  id               String    @id @default(uuid())
+  title            String    @db.VarChar(255)
+  short_description String   @db.Text
+  description      String?   @db.Text
+  location         String    @db.VarChar(255)
+  mapURL           String?    @db.VarChar(255)
+  images           String[]  
+  priority         ComplaintPriority  @default(LOW)
+  status           ComplaintStatus    @default(PENDING)
+  createdBy        String
+  user             User      @relation(fields: [createdBy], references: [id]) 
+  categoryId       String
+  category         Category  @relation(fields:[categoryId], references: [id])
+  upvotes          Int       @default(0)
+
+  complaint_comment Complaint_Comment[]
+
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  resolvedAt       DateTime?
+
+ @@index([createdBy])
+ @@index([categoryId])
+ @@unique([createdBy, title])
+
+@@map("complaints")
+}

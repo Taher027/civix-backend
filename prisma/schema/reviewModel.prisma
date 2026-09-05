@@ -1,0 +1,18 @@
+model Review {
+id           String @id   @default(uuid())
+text         String        @db.Text
+rating       Decimal       @db.Decimal(10,2)
+userID       String        
+user        User           @relation(fields: [userID],references: [id])
+serviceID     String      
+service       Service      @relation(fields: [serviceID],references: [id])
+
+
+createdAt DateTime @default(now())
+updatedAt DateTime @updatedAt
+
+
+@@unique([userID, serviceID])
+@@index([serviceID])
+@@map("reviews")
+}

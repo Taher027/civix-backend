@@ -1,5 +1,30 @@
 enum UserRole{
-    
+    CITIZEN
+    AGENT
     ADMIN
+}
+enum UserStatus {
+  ACTIVE
+  BLOCKED
+  DELETED
+}
+enum ComplaintStatus {
+  PENDING
+  REVIEWED
+  IN_PROGRESS
+  RESOLVED
+  REJECTED
+}
+enum ComplaintPriority {
+  LOW
+  MEDIUM
+  HIGH
+  CRITICAL
+}
+
+enum Complaint_CommentStatus {
+  APPROVED
+  REJECTED
+  DELETED
 }
 

@@ -8,5 +8,10 @@
  *
  * 🟢 You can import this file directly.
  */
+export type * from './models/Category'
+export type * from './models/Complaint_Comment'
+export type * from './models/Complaint'
+export type * from './models/Review'
+export type * from './models/Service'
 export type * from './models/User'
 export type * from './commonInputTypes'

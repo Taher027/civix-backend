@@ -1,0 +1,19 @@
+model Service{
+    id                     String       @id @default(uuid())
+    title                  String       @db.VarChar(255)
+    short_description      String       @db.Text
+    description            String?      @db.Text
+    imagesURL               String[]     
+    price                  Decimal      @db.Decimal(10,2)
+    estimated_days         Int
+    categoryId             String
+    category               Category     @relation(fields: [categoryId],references: [id])
+    review                 Review[]
+
+    createdAt              DateTime     @default(now())
+    updatedAt              DateTime    @updatedAt
+
+    @@index([categoryId])
+    @@map("services")
+
+}

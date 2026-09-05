@@ -51,6 +51,11 @@ export const AnyNull = runtime.AnyNull
 
 
 export const ModelName = {
+  Category: 'Category',
+  Complaint_Comment: 'Complaint_Comment',
+  Complaint: 'Complaint',
+  Review: 'Review',
+  Service: 'Service',
   User: 'User'
 } as const
 
@@ -70,17 +75,95 @@ export const TransactionIsolationLevel = runtime.makeStrictEnum({
 export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
 
 
+export const CategoryScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type CategoryScalarFieldEnum = (typeof CategoryScalarFieldEnum)[keyof typeof CategoryScalarFieldEnum]
+
+
+export const Complaint_CommentScalarFieldEnum = {
+  id: 'id',
+  text: 'text',
+  imagesURL: 'imagesURL',
+  status: 'status',
+  userID: 'userID',
+  complaintID: 'complaintID',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type Complaint_CommentScalarFieldEnum = (typeof Complaint_CommentScalarFieldEnum)[keyof typeof Complaint_CommentScalarFieldEnum]
+
+
+export const ComplaintScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  short_description: 'short_description',
+  description: 'description',
+  location: 'location',
+  mapURL: 'mapURL',
+  images: 'images',
+  priority: 'priority',
+  status: 'status',
+  createdBy: 'createdBy',
+  categoryId: 'categoryId',
+  upvotes: 'upvotes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  resolvedAt: 'resolvedAt'
+} as const
+
+export type ComplaintScalarFieldEnum = (typeof ComplaintScalarFieldEnum)[keyof typeof ComplaintScalarFieldEnum]
+
+
+export const ReviewScalarFieldEnum = {
+  id: 'id',
+  text: 'text',
+  rating: 'rating',
+  userID: 'userID',
+  serviceID: 'serviceID',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
+
+
+export const ServiceScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  short_description: 'short_description',
+  description: 'description',
+  imagesURL: 'imagesURL',
+  price: 'price',
+  estimated_days: 'estimated_days',
+  categoryId: 'categoryId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ServiceScalarFieldEnum = (typeof ServiceScalarFieldEnum)[keyof typeof ServiceScalarFieldEnum]
+
+
 export const UserScalarFieldEnum = {
   id: 'id',
   name: 'name',
   email: 'email',
   password: 'password',
-  phone: 'phone',
-  nidNumber: 'nidNumber',
+  emailVerified: 'emailVerified',
   role: 'role',
-  avatar: 'avatar',
-  isVerified: 'isVerified',
+  phone: 'phone',
+  city: 'city',
   address: 'address',
+  avatar: 'avatar',
+  avatarPublicId: 'avatarPublicId',
+  status: 'status',
+  isDeleted: 'isDeleted',
+  deletedAt: 'deletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

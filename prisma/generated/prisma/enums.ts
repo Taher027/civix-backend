@@ -10,7 +10,48 @@
 */
 
 export const UserRole = {
+  CITIZEN: 'CITIZEN',
+  AGENT: 'AGENT',
   ADMIN: 'ADMIN'
 } as const
 
 export type UserRole = (typeof UserRole)[keyof typeof UserRole]
+
+
+export const UserStatus = {
+  ACTIVE: 'ACTIVE',
+  BLOCKED: 'BLOCKED',
+  DELETED: 'DELETED'
+} as const
+
+export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus]
+
+
+export const ComplaintStatus = {
+  PENDING: 'PENDING',
+  REVIEWED: 'REVIEWED',
+  IN_PROGRESS: 'IN_PROGRESS',
+  RESOLVED: 'RESOLVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type ComplaintStatus = (typeof ComplaintStatus)[keyof typeof ComplaintStatus]
+
+
+export const ComplaintPriority = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH',
+  CRITICAL: 'CRITICAL'
+} as const
+
+export type ComplaintPriority = (typeof ComplaintPriority)[keyof typeof ComplaintPriority]
+
+
+export const Complaint_CommentStatus = {
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  DELETED: 'DELETED'
+} as const
+
+export type Complaint_CommentStatus = (typeof Complaint_CommentStatus)[keyof typeof Complaint_CommentStatus]
