@@ -17,6 +17,7 @@
     "lint:fix": "npx @biomejs/biome lint --write ./src"
   },
   "devDependencies": {
+    "@types/bcrypt": "^6.0.0",
     "@types/node": "^26.4.1",
     "@types/pg": "^8.23.1",
     "prisma": "^7.10.0",
