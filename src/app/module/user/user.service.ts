@@ -4,6 +4,8 @@ import type { IUserRegister } from "./user.interface";
 import httpStatus from "http-status";
 import bcrypt from "bcrypt";
 import config from "../../config";
+import type { UploadApiResponse } from "cloudinary";
+import { cloudinary } from "../../lib/cloudinary";
 
 const userRegisterToDB = async (payload: IUserRegister) => {
 	const isExist = await prisma.user.findUnique({
@@ -34,7 +36,61 @@ const userRegisterToDB = async (payload: IUserRegister) => {
 
 	return createUser;
 };
+const updateProfileImage = async (buffer: Buffer, userID: string) => {
+	const currentUser = await prisma.user.findUnique({
+		where: {
+			id: userID,
+		},
+		select: {
+			avatarPublicId: true,
+			avatar: true,
+		},
+	});
+	const cloudinaryResult = await new Promise<UploadApiResponse>(
+		(resolve, reject) => {
+			cloudinary.uploader
+				.upload_stream(
+					{
+						resource_type: "auto",
+					},
+					async (error, result) => {
+						if (error) {
+							return reject(error);
+						}
+						if (!result) {
+							return reject(
+								new AppError(
+									httpStatus.BAD_REQUEST,
+									"No result found from cloudinary",
+								),
+							);
+						}
+						resolve(result);
+					},
+				)
+				.end(buffer);
+		},
+	);
+
+	const updatedUser = await prisma.user.update({
+		where: {
+			id: userID,
+		},
+		data: {
+			avatar: cloudinaryResult.secure_url,
+			avatarPublicId: cloudinaryResult.public_id,
+		},
+		omit: { password: true },
+	});
+
+	if (currentUser?.avatarPublicId && currentUser.avatar) {
+		await cloudinary.uploader.destroy(currentUser.avatarPublicId);
+	}
+
+	return updatedUser;
+};
 
 export const userServices = {
 	userRegisterToDB,
+	updateProfileImage,
 };

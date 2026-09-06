@@ -3,6 +3,7 @@ import { catchAsync } from "../../../utils/catchAsync";
 import { sendResponse } from "../../../utils/sendResponse";
 import httpStatus from "http-status";
 import { userServices } from "./user.service";
+import { AppError } from "../../../utils/AppError";
 
 const userRegister = catchAsync(async (req: Request, res: Response) => {
 	const payload = req.body;
@@ -17,6 +18,24 @@ const userRegister = catchAsync(async (req: Request, res: Response) => {
 	});
 });
 
+const updateProfileImage = catchAsync(async (req: Request, res: Response) => {
+	if (!req.file) {
+		throw new AppError(httpStatus.BAD_REQUEST, "No File provided");
+	}
+	const userID = req.user?.userID;
+	const result = await userServices.updateProfileImage(
+		req.file.buffer,
+		userID!,
+	);
+	sendResponse(res, {
+		statusCode: httpStatus.OK,
+		success: true,
+		message: "Profile image update successfully",
+		data: result,
+	});
+});
+
 export const userControllers = {
 	userRegister,
+	updateProfileImage,
 };
