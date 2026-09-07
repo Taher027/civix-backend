@@ -19,5 +19,11 @@ router.patch(
 	upload.single("profileImage"),
 	userControllers.updateProfileImage,
 );
+router.patch(
+	"/update-user",
+	validateRequest(userZodValidation.updateUserValidationSchema),
+	auth(UserRole.ADMIN, UserRole.AGENT, UserRole.CITIZEN),
+	userControllers.updateUser,
+);
 
 export const userRoute = router;

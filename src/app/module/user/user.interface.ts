@@ -7,3 +7,6 @@ export interface IUserRegister {
 	address: string;
 	avatar?: string;
 }
+export type IUserUpdateData = Partial<
+	Omit<IUserRegister, "email" | "password">
+>;

@@ -1,6 +1,6 @@
 import { AppError } from "../../../utils/AppError";
 import { prisma } from "../../lib/prisma";
-import type { IUserRegister } from "./user.interface";
+import type { IUserRegister, IUserUpdateData } from "./user.interface";
 import httpStatus from "http-status";
 import bcrypt from "bcrypt";
 import config from "../../config";
@@ -89,8 +89,31 @@ const updateProfileImage = async (buffer: Buffer, userID: string) => {
 
 	return updatedUser;
 };
+const updateUserToDB = async (userID: string, payload: IUserUpdateData) => {
+	const isExist = await prisma.user.findUnique({
+		where: {
+			id: userID,
+		},
+	});
+
+	if (!isExist) {
+		throw new AppError(httpStatus.NOT_FOUND, "User not found");
+	}
+	const updatedUser = await prisma.user.update({
+		where: {
+			id: userID,
+		},
+		data: payload,
+		omit: {
+			password: true,
+		},
+	});
+
+	return updatedUser;
+};
 
 export const userServices = {
 	userRegisterToDB,
 	updateProfileImage,
+	updateUserToDB,
 };

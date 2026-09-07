@@ -34,8 +34,27 @@ const updateProfileImage = catchAsync(async (req: Request, res: Response) => {
 		data: result,
 	});
 });
+const updateUser = catchAsync(async (req: Request, res: Response) => {
+	const userID = req.user?.userID;
+
+	if (!userID) {
+		throw new AppError(httpStatus.UNAUTHORIZED, "User not authenticated");
+	}
+
+	const payload = req.body;
+
+	const result = await userServices.updateUserToDB(userID, payload);
+
+	sendResponse(res, {
+		statusCode: httpStatus.OK,
+		success: true,
+		message: "User profile updated successfully",
+		data: result,
+	});
+});
 
 export const userControllers = {
 	userRegister,
 	updateProfileImage,
+	updateUser,
 };
