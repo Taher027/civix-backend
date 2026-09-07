@@ -10,6 +10,8 @@ import notFound from "./app/middleware/notFound";
 import { userRoute } from "./app/module/user/user.route";
 import { authRouter } from "./app/module/auth/auth.route";
 import globalErrorHandler from "./app/middleware/globalErrorHandler";
+import { compaintRoute } from "./app/module/compliant/complaint.route";
+import { categoryRouter } from "./app/module/category/category.route";
 const app: Application = express();
 app.use(
 	cors({
@@ -26,6 +28,9 @@ app.get("/", (req: Request, res: Response) => {
 });
 app.use("/api/user", userRoute);
 app.use("/api/auth", authRouter);
+app.use("/api/category", categoryRouter);
+
+app.use("/api/complaint", compaintRoute);
 app.use(globalErrorHandler);
 app.use(notFound);
 
