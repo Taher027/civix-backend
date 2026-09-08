@@ -23,8 +23,37 @@ const getAllCategory = async () => {
 	const categories = await prisma.category.findMany({});
 	return categories;
 };
+const updateCategory = async (payload: ICategory, categoryId: string) => {
+	const updatedCategory = await prisma.category.update({
+		where: {
+			id: categoryId,
+		},
+		data: {
+			title: payload.title,
+		},
+	});
+	return updatedCategory;
+};
+const deleteCategory = async (categoryId: string) => {
+	const category = await prisma.category.findUnique({
+		where: { id: categoryId },
+	});
+	if (!category?.title) {
+		throw new AppError(httpStatus.NOT_FOUND, "category does not found!");
+	}
+	await prisma.category.delete({
+		where: {
+			id: categoryId,
+		},
+	});
+	return {
+		messege: `category ${category?.title} is deleted successfull!`,
+	};
+};
 
 export const categoryServices = {
 	createCategoryToDB,
 	getAllCategory,
+	updateCategory,
+	deleteCategory,
 };

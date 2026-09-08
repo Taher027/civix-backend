@@ -9,5 +9,7 @@ router.post(
 	categoryControllers.createCategory,
 );
 router.get("/categories", categoryControllers.getAllCategory);
+router.patch("/:categoryId", categoryControllers.updateCategory);
+router.delete("/:categoryId", categoryControllers.deleteCategory);
 
 export const categoryRouter = router;
