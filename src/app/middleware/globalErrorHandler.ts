@@ -19,7 +19,16 @@ const globalErrorHandler: ErrorRequestHandler = (error, req, res, next) => {
 	} else if (error instanceof Prisma.PrismaClientValidationError) {
 		statusCode = 400;
 		message = "Invalid data passed to database query";
-		errorMessages = [{ path: "", message: error.message }];
+		const fullMessage = error.message;
+		const lines = fullMessage.trim().split("\n");
+		const cleanMessage =
+			lines[lines.length - 1] || "Invalid data passed to database query";
+		errorMessages = [
+			{
+				path: "",
+				message: cleanMessage.trim(),
+			},
+		];
 	} else if (error instanceof AppError) {
 		statusCode = error.statusCode;
 		message = error.message;

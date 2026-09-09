@@ -2,7 +2,10 @@ import { AppError } from "../../../utils/AppError";
 import { prisma } from "../../lib/prisma";
 import type { RequestUser } from "../../middleware/auth";
 import httpStatus from "http-status";
-import type { ICreateComplaintInput } from "./complaint.interface";
+import type {
+	ICreateComplaintInput,
+	IUpdateComplaintInput,
+} from "./complaint.interface";
 
 const createComplaintToDB = async (
 	payload: ICreateComplaintInput,
@@ -37,7 +40,50 @@ const createComplaintToDB = async (
 
 	return compalint;
 };
+const updateComplaintToDB = async (
+	payload: IUpdateComplaintInput,
+	id: string,
+	user: RequestUser,
+) => {
+	const existingComplaint = await prisma.complaint.findUnique({
+		where: {
+			id: id,
+		},
+		select: {
+			createdBy: true,
+		},
+	});
+	if (!existingComplaint) {
+		throw new AppError(httpStatus.NOT_FOUND, "Complaint does not exists!");
+	}
+	if (user.userID !== existingComplaint.createdBy) {
+		throw new AppError(httpStatus.UNAUTHORIZED, "Unauthorized Access!");
+	}
+	const {
+		title,
+		description,
+		short_description,
+		location,
+		mapURL,
+		initialImages,
+	} = payload;
+
+	const updatedComplaint = await prisma.complaint.update({
+		where: { id },
+		data: {
+			title,
+			description,
+			short_description,
+			mapURL,
+			initialImages,
+			location,
+		},
+	});
+
+	return updatedComplaint;
+};
 
 export const complaintServices = {
 	createComplaintToDB,
+	updateComplaintToDB,
 };

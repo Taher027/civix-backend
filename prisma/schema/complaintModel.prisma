@@ -5,7 +5,8 @@ model Complaint {
   description      String?   @db.Text
   location         String    @db.VarChar(255)
   mapURL           String?    @db.VarChar(255)
-  images           String[]  
+  initialImages     String[] 
+  resolvedImages    String[]  
   priority         ComplaintPriority  @default(LOW)
   status           ComplaintStatus    @default(PENDING)
   createdBy        String

@@ -75,7 +75,8 @@ export type ComplaintCountAggregateOutputType = {
   description: number
   location: number
   mapURL: number
-  images: number
+  initialImages: number
+  resolvedImages: number
   priority: number
   status: number
   createdBy: number
@@ -137,7 +138,8 @@ export type ComplaintCountAggregateInputType = {
   description?: true
   location?: true
   mapURL?: true
-  images?: true
+  initialImages?: true
+  resolvedImages?: true
   priority?: true
   status?: true
   createdBy?: true
@@ -242,7 +244,8 @@ export type ComplaintGroupByOutputType = {
   description: string | null
   location: string
   mapURL: string | null
-  images: string[]
+  initialImages: string[]
+  resolvedImages: string[]
   priority: $Enums.ComplaintPriority
   status: $Enums.ComplaintStatus
   createdBy: string
@@ -283,7 +286,8 @@ export type ComplaintWhereInput = {
   description?: Prisma.StringNullableFilter<"Complaint"> | string | null
   location?: Prisma.StringFilter<"Complaint"> | string
   mapURL?: Prisma.StringNullableFilter<"Complaint"> | string | null
-  images?: Prisma.StringNullableListFilter<"Complaint">
+  initialImages?: Prisma.StringNullableListFilter<"Complaint">
+  resolvedImages?: Prisma.StringNullableListFilter<"Complaint">
   priority?: Prisma.EnumComplaintPriorityFilter<"Complaint"> | $Enums.ComplaintPriority
   status?: Prisma.EnumComplaintStatusFilter<"Complaint"> | $Enums.ComplaintStatus
   createdBy?: Prisma.StringFilter<"Complaint"> | string
@@ -304,7 +308,8 @@ export type ComplaintOrderByWithRelationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrder
   mapURL?: Prisma.SortOrderInput | Prisma.SortOrder
-  images?: Prisma.SortOrder
+  initialImages?: Prisma.SortOrder
+  resolvedImages?: Prisma.SortOrder
   priority?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
@@ -329,7 +334,8 @@ export type ComplaintWhereUniqueInput = Prisma.AtLeast<{
   description?: Prisma.StringNullableFilter<"Complaint"> | string | null
   location?: Prisma.StringFilter<"Complaint"> | string
   mapURL?: Prisma.StringNullableFilter<"Complaint"> | string | null
-  images?: Prisma.StringNullableListFilter<"Complaint">
+  initialImages?: Prisma.StringNullableListFilter<"Complaint">
+  resolvedImages?: Prisma.StringNullableListFilter<"Complaint">
   priority?: Prisma.EnumComplaintPriorityFilter<"Complaint"> | $Enums.ComplaintPriority
   status?: Prisma.EnumComplaintStatusFilter<"Complaint"> | $Enums.ComplaintStatus
   createdBy?: Prisma.StringFilter<"Complaint"> | string
@@ -350,7 +356,8 @@ export type ComplaintOrderByWithAggregationInput = {
   description?: Prisma.SortOrderInput | Prisma.SortOrder
   location?: Prisma.SortOrder
   mapURL?: Prisma.SortOrderInput | Prisma.SortOrder
-  images?: Prisma.SortOrder
+  initialImages?: Prisma.SortOrder
+  resolvedImages?: Prisma.SortOrder
   priority?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
@@ -376,7 +383,8 @@ export type ComplaintScalarWhereWithAggregatesInput = {
   description?: Prisma.StringNullableWithAggregatesFilter<"Complaint"> | string | null
   location?: Prisma.StringWithAggregatesFilter<"Complaint"> | string
   mapURL?: Prisma.StringNullableWithAggregatesFilter<"Complaint"> | string | null
-  images?: Prisma.StringNullableListFilter<"Complaint">
+  initialImages?: Prisma.StringNullableListFilter<"Complaint">
+  resolvedImages?: Prisma.StringNullableListFilter<"Complaint">
   priority?: Prisma.EnumComplaintPriorityWithAggregatesFilter<"Complaint"> | $Enums.ComplaintPriority
   status?: Prisma.EnumComplaintStatusWithAggregatesFilter<"Complaint"> | $Enums.ComplaintStatus
   createdBy?: Prisma.StringWithAggregatesFilter<"Complaint"> | string
@@ -394,7 +402,8 @@ export type ComplaintCreateInput = {
   description?: string | null
   location: string
   mapURL?: string | null
-  images?: Prisma.ComplaintCreateimagesInput | string[]
+  initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintCreateresolvedImagesInput | string[]
   priority?: $Enums.ComplaintPriority
   status?: $Enums.ComplaintStatus
   upvotes?: number
@@ -413,7 +422,8 @@ export type ComplaintUncheckedCreateInput = {
   description?: string | null
   location: string
   mapURL?: string | null
-  images?: Prisma.ComplaintCreateimagesInput | string[]
+  initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintCreateresolvedImagesInput | string[]
   priority?: $Enums.ComplaintPriority
   status?: $Enums.ComplaintStatus
   createdBy: string
@@ -432,7 +442,8 @@ export type ComplaintUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  images?: Prisma.ComplaintUpdateimagesInput | string[]
+  initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintUpdateresolvedImagesInput | string[]
   priority?: Prisma.EnumComplaintPriorityFieldUpdateOperationsInput | $Enums.ComplaintPriority
   status?: Prisma.EnumComplaintStatusFieldUpdateOperationsInput | $Enums.ComplaintStatus
   upvotes?: Prisma.IntFieldUpdateOperationsInput | number
@@ -451,7 +462,8 @@ export type ComplaintUncheckedUpdateInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  images?: Prisma.ComplaintUpdateimagesInput | string[]
+  initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintUpdateresolvedImagesInput | string[]
   priority?: Prisma.EnumComplaintPriorityFieldUpdateOperationsInput | $Enums.ComplaintPriority
   status?: Prisma.EnumComplaintStatusFieldUpdateOperationsInput | $Enums.ComplaintStatus
   createdBy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -470,7 +482,8 @@ export type ComplaintCreateManyInput = {
   description?: string | null
   location: string
   mapURL?: string | null
-  images?: Prisma.ComplaintCreateimagesInput | string[]
+  initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintCreateresolvedImagesInput | string[]
   priority?: $Enums.ComplaintPriority
   status?: $Enums.ComplaintStatus
   createdBy: string
@@ -488,7 +501,8 @@ export type ComplaintUpdateManyMutationInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  images?: Prisma.ComplaintUpdateimagesInput | string[]
+  initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintUpdateresolvedImagesInput | string[]
   priority?: Prisma.EnumComplaintPriorityFieldUpdateOperationsInput | $Enums.ComplaintPriority
   status?: Prisma.EnumComplaintStatusFieldUpdateOperationsInput | $Enums.ComplaintStatus
   upvotes?: Prisma.IntFieldUpdateOperationsInput | number
@@ -504,7 +518,8 @@ export type ComplaintUncheckedUpdateManyInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  images?: Prisma.ComplaintUpdateimagesInput | string[]
+  initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintUpdateresolvedImagesInput | string[]
   priority?: Prisma.EnumComplaintPriorityFieldUpdateOperationsInput | $Enums.ComplaintPriority
   status?: Prisma.EnumComplaintStatusFieldUpdateOperationsInput | $Enums.ComplaintStatus
   createdBy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -542,7 +557,8 @@ export type ComplaintCountOrderByAggregateInput = {
   description?: Prisma.SortOrder
   location?: Prisma.SortOrder
   mapURL?: Prisma.SortOrder
-  images?: Prisma.SortOrder
+  initialImages?: Prisma.SortOrder
+  resolvedImages?: Prisma.SortOrder
   priority?: Prisma.SortOrder
   status?: Prisma.SortOrder
   createdBy?: Prisma.SortOrder
@@ -651,7 +667,11 @@ export type ComplaintUpdateOneRequiredWithoutComplaint_commentNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ComplaintUpdateToOneWithWhereWithoutComplaint_commentInput, Prisma.ComplaintUpdateWithoutComplaint_commentInput>, Prisma.ComplaintUncheckedUpdateWithoutComplaint_commentInput>
 }
 
-export type ComplaintCreateimagesInput = {
+export type ComplaintCreateinitialImagesInput = {
+  set: string[]
+}
+
+export type ComplaintCreateresolvedImagesInput = {
   set: string[]
 }
 
@@ -659,7 +679,12 @@ export type NullableStringFieldUpdateOperationsInput = {
   set?: string | null
 }
 
-export type ComplaintUpdateimagesInput = {
+export type ComplaintUpdateinitialImagesInput = {
+  set?: string[]
+  push?: string | string[]
+}
+
+export type ComplaintUpdateresolvedImagesInput = {
   set?: string[]
   push?: string | string[]
 }
@@ -733,7 +758,8 @@ export type ComplaintCreateWithoutCategoryInput = {
   description?: string | null
   location: string
   mapURL?: string | null
-  images?: Prisma.ComplaintCreateimagesInput | string[]
+  initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintCreateresolvedImagesInput | string[]
   priority?: $Enums.ComplaintPriority
   status?: $Enums.ComplaintStatus
   upvotes?: number
@@ -751,7 +777,8 @@ export type ComplaintUncheckedCreateWithoutCategoryInput = {
   description?: string | null
   location: string
   mapURL?: string | null
-  images?: Prisma.ComplaintCreateimagesInput | string[]
+  initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintCreateresolvedImagesInput | string[]
   priority?: $Enums.ComplaintPriority
   status?: $Enums.ComplaintStatus
   createdBy: string
@@ -798,7 +825,8 @@ export type ComplaintScalarWhereInput = {
   description?: Prisma.StringNullableFilter<"Complaint"> | string | null
   location?: Prisma.StringFilter<"Complaint"> | string
   mapURL?: Prisma.StringNullableFilter<"Complaint"> | string | null
-  images?: Prisma.StringNullableListFilter<"Complaint">
+  initialImages?: Prisma.StringNullableListFilter<"Complaint">
+  resolvedImages?: Prisma.StringNullableListFilter<"Complaint">
   priority?: Prisma.EnumComplaintPriorityFilter<"Complaint"> | $Enums.ComplaintPriority
   status?: Prisma.EnumComplaintStatusFilter<"Complaint"> | $Enums.ComplaintStatus
   createdBy?: Prisma.StringFilter<"Complaint"> | string
@@ -816,7 +844,8 @@ export type ComplaintCreateWithoutComplaint_commentInput = {
   description?: string | null
   location: string
   mapURL?: string | null
-  images?: Prisma.ComplaintCreateimagesInput | string[]
+  initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintCreateresolvedImagesInput | string[]
   priority?: $Enums.ComplaintPriority
   status?: $Enums.ComplaintStatus
   upvotes?: number
@@ -834,7 +863,8 @@ export type ComplaintUncheckedCreateWithoutComplaint_commentInput = {
   description?: string | null
   location: string
   mapURL?: string | null
-  images?: Prisma.ComplaintCreateimagesInput | string[]
+  initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintCreateresolvedImagesInput | string[]
   priority?: $Enums.ComplaintPriority
   status?: $Enums.ComplaintStatus
   createdBy: string
@@ -868,7 +898,8 @@ export type ComplaintUpdateWithoutComplaint_commentInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  images?: Prisma.ComplaintUpdateimagesInput | string[]
+  initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintUpdateresolvedImagesInput | string[]
   priority?: Prisma.EnumComplaintPriorityFieldUpdateOperationsInput | $Enums.ComplaintPriority
   status?: Prisma.EnumComplaintStatusFieldUpdateOperationsInput | $Enums.ComplaintStatus
   upvotes?: Prisma.IntFieldUpdateOperationsInput | number
@@ -886,7 +917,8 @@ export type ComplaintUncheckedUpdateWithoutComplaint_commentInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  images?: Prisma.ComplaintUpdateimagesInput | string[]
+  initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintUpdateresolvedImagesInput | string[]
   priority?: Prisma.EnumComplaintPriorityFieldUpdateOperationsInput | $Enums.ComplaintPriority
   status?: Prisma.EnumComplaintStatusFieldUpdateOperationsInput | $Enums.ComplaintStatus
   createdBy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -904,7 +936,8 @@ export type ComplaintCreateWithoutUserInput = {
   description?: string | null
   location: string
   mapURL?: string | null
-  images?: Prisma.ComplaintCreateimagesInput | string[]
+  initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintCreateresolvedImagesInput | string[]
   priority?: $Enums.ComplaintPriority
   status?: $Enums.ComplaintStatus
   upvotes?: number
@@ -922,7 +955,8 @@ export type ComplaintUncheckedCreateWithoutUserInput = {
   description?: string | null
   location: string
   mapURL?: string | null
-  images?: Prisma.ComplaintCreateimagesInput | string[]
+  initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintCreateresolvedImagesInput | string[]
   priority?: $Enums.ComplaintPriority
   status?: $Enums.ComplaintStatus
   categoryId: string
@@ -966,7 +1000,8 @@ export type ComplaintCreateManyCategoryInput = {
   description?: string | null
   location: string
   mapURL?: string | null
-  images?: Prisma.ComplaintCreateimagesInput | string[]
+  initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintCreateresolvedImagesInput | string[]
   priority?: $Enums.ComplaintPriority
   status?: $Enums.ComplaintStatus
   createdBy: string
@@ -983,7 +1018,8 @@ export type ComplaintUpdateWithoutCategoryInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  images?: Prisma.ComplaintUpdateimagesInput | string[]
+  initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintUpdateresolvedImagesInput | string[]
   priority?: Prisma.EnumComplaintPriorityFieldUpdateOperationsInput | $Enums.ComplaintPriority
   status?: Prisma.EnumComplaintStatusFieldUpdateOperationsInput | $Enums.ComplaintStatus
   upvotes?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1001,7 +1037,8 @@ export type ComplaintUncheckedUpdateWithoutCategoryInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  images?: Prisma.ComplaintUpdateimagesInput | string[]
+  initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintUpdateresolvedImagesInput | string[]
   priority?: Prisma.EnumComplaintPriorityFieldUpdateOperationsInput | $Enums.ComplaintPriority
   status?: Prisma.EnumComplaintStatusFieldUpdateOperationsInput | $Enums.ComplaintStatus
   createdBy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1019,7 +1056,8 @@ export type ComplaintUncheckedUpdateManyWithoutCategoryInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  images?: Prisma.ComplaintUpdateimagesInput | string[]
+  initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintUpdateresolvedImagesInput | string[]
   priority?: Prisma.EnumComplaintPriorityFieldUpdateOperationsInput | $Enums.ComplaintPriority
   status?: Prisma.EnumComplaintStatusFieldUpdateOperationsInput | $Enums.ComplaintStatus
   createdBy?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1036,7 +1074,8 @@ export type ComplaintCreateManyUserInput = {
   description?: string | null
   location: string
   mapURL?: string | null
-  images?: Prisma.ComplaintCreateimagesInput | string[]
+  initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintCreateresolvedImagesInput | string[]
   priority?: $Enums.ComplaintPriority
   status?: $Enums.ComplaintStatus
   categoryId: string
@@ -1053,7 +1092,8 @@ export type ComplaintUpdateWithoutUserInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  images?: Prisma.ComplaintUpdateimagesInput | string[]
+  initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintUpdateresolvedImagesInput | string[]
   priority?: Prisma.EnumComplaintPriorityFieldUpdateOperationsInput | $Enums.ComplaintPriority
   status?: Prisma.EnumComplaintStatusFieldUpdateOperationsInput | $Enums.ComplaintStatus
   upvotes?: Prisma.IntFieldUpdateOperationsInput | number
@@ -1071,7 +1111,8 @@ export type ComplaintUncheckedUpdateWithoutUserInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  images?: Prisma.ComplaintUpdateimagesInput | string[]
+  initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintUpdateresolvedImagesInput | string[]
   priority?: Prisma.EnumComplaintPriorityFieldUpdateOperationsInput | $Enums.ComplaintPriority
   status?: Prisma.EnumComplaintStatusFieldUpdateOperationsInput | $Enums.ComplaintStatus
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1089,7 +1130,8 @@ export type ComplaintUncheckedUpdateManyWithoutUserInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  images?: Prisma.ComplaintUpdateimagesInput | string[]
+  initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
+  resolvedImages?: Prisma.ComplaintUpdateresolvedImagesInput | string[]
   priority?: Prisma.EnumComplaintPriorityFieldUpdateOperationsInput | $Enums.ComplaintPriority
   status?: Prisma.EnumComplaintStatusFieldUpdateOperationsInput | $Enums.ComplaintStatus
   categoryId?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1137,7 +1179,8 @@ export type ComplaintSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   description?: boolean
   location?: boolean
   mapURL?: boolean
-  images?: boolean
+  initialImages?: boolean
+  resolvedImages?: boolean
   priority?: boolean
   status?: boolean
   createdBy?: boolean
@@ -1159,7 +1202,8 @@ export type ComplaintSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   description?: boolean
   location?: boolean
   mapURL?: boolean
-  images?: boolean
+  initialImages?: boolean
+  resolvedImages?: boolean
   priority?: boolean
   status?: boolean
   createdBy?: boolean
@@ -1179,7 +1223,8 @@ export type ComplaintSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   description?: boolean
   location?: boolean
   mapURL?: boolean
-  images?: boolean
+  initialImages?: boolean
+  resolvedImages?: boolean
   priority?: boolean
   status?: boolean
   createdBy?: boolean
@@ -1199,7 +1244,8 @@ export type ComplaintSelectScalar = {
   description?: boolean
   location?: boolean
   mapURL?: boolean
-  images?: boolean
+  initialImages?: boolean
+  resolvedImages?: boolean
   priority?: boolean
   status?: boolean
   createdBy?: boolean
@@ -1210,7 +1256,7 @@ export type ComplaintSelectScalar = {
   resolvedAt?: boolean
 }
 
-export type ComplaintOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "short_description" | "description" | "location" | "mapURL" | "images" | "priority" | "status" | "createdBy" | "categoryId" | "upvotes" | "createdAt" | "updatedAt" | "resolvedAt", ExtArgs["result"]["complaint"]>
+export type ComplaintOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "short_description" | "description" | "location" | "mapURL" | "initialImages" | "resolvedImages" | "priority" | "status" | "createdBy" | "categoryId" | "upvotes" | "createdAt" | "updatedAt" | "resolvedAt", ExtArgs["result"]["complaint"]>
 export type ComplaintInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
@@ -1240,7 +1286,8 @@ export type $ComplaintPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     description: string | null
     location: string
     mapURL: string | null
-    images: string[]
+    initialImages: string[]
+    resolvedImages: string[]
     priority: $Enums.ComplaintPriority
     status: $Enums.ComplaintStatus
     createdBy: string
@@ -1681,7 +1728,8 @@ export interface ComplaintFieldRefs {
   readonly description: Prisma.FieldRef<"Complaint", 'String'>
   readonly location: Prisma.FieldRef<"Complaint", 'String'>
   readonly mapURL: Prisma.FieldRef<"Complaint", 'String'>
-  readonly images: Prisma.FieldRef<"Complaint", 'String[]'>
+  readonly initialImages: Prisma.FieldRef<"Complaint", 'String[]'>
+  readonly resolvedImages: Prisma.FieldRef<"Complaint", 'String[]'>
   readonly priority: Prisma.FieldRef<"Complaint", 'ComplaintPriority'>
   readonly status: Prisma.FieldRef<"Complaint", 'ComplaintStatus'>
   readonly createdBy: Prisma.FieldRef<"Complaint", 'String'>

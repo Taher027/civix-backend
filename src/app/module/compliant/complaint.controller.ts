@@ -20,7 +20,28 @@ const createComplaint = catchAsync(async (req: Request, res: Response) => {
 		data: result,
 	});
 });
+const updateComplaint = catchAsync(async (req: Request, res: Response) => {
+	const { id } = req.params;
+	const user = req.user;
+	if (!user) {
+		throw new AppError(httpStatus.UNAUTHORIZED, "Unauthorized Access!");
+	}
+	const payload = req.body;
+	const result = await complaintServices.updateComplaintToDB(
+		payload,
+		id as string,
+		user,
+	);
+
+	sendResponse(res, {
+		success: true,
+		statusCode: httpStatus.OK,
+		message: "Complaint updated successfull",
+		data: result,
+	});
+});
 
 export const complaintControllers = {
 	createComplaint,
+	updateComplaint,
 };

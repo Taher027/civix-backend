@@ -9,8 +9,17 @@ export interface ICreateComplaintInput {
 	description?: string;
 	location: string;
 	mapURL?: string;
-	images?: string[];
+	initialImages?: string[];
 	priority?: ComplaintPriority;
 	status?: ComplaintStatus;
 	categoryId: string;
+}
+export interface IUpdateComplaintInput {
+	title?: string;
+	short_description?: string;
+	description?: string;
+	location?: string;
+	mapURL?: string;
+	initialImages?: string[];
+	priority?: ComplaintPriority;
 }
