@@ -7,6 +7,7 @@ export interface ICreateComplaintInput {
 	title: string;
 	short_description: string;
 	description?: string;
+	city: string;
 	location: string;
 	mapURL?: string;
 	initialImages?: string[];
@@ -18,6 +19,7 @@ export interface IUpdateComplaintInput {
 	title?: string;
 	short_description?: string;
 	description?: string;
+	city?: string;
 	location?: string;
 	mapURL?: string;
 	initialImages?: string[];

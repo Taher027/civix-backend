@@ -3,6 +3,7 @@ model Complaint {
   title            String    @db.VarChar(255)
   short_description String   @db.Text
   description      String?   @db.Text
+  city              String   @db.Text
   location         String    @db.VarChar(255)
   mapURL           String?    @db.VarChar(255)
   initialImages     String[] 

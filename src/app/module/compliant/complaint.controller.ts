@@ -4,6 +4,7 @@ import { complaintServices } from "./complaint.service";
 import { sendResponse } from "../../../utils/sendResponse";
 import httpStatus from "http-status";
 import { AppError } from "../../../utils/AppError";
+import pick from "../../../shared/pick";
 
 const createComplaint = catchAsync(async (req: Request, res: Response) => {
 	const user = req.user;
@@ -17,6 +18,25 @@ const createComplaint = catchAsync(async (req: Request, res: Response) => {
 		success: true,
 		statusCode: httpStatus.CREATED,
 		message: "Complaint create successfull",
+		data: result,
+	});
+});
+const getAllComplaints = catchAsync(async (req: Request, res: Response) => {
+	const filters = pick(req.query, [
+		"title",
+		"city",
+		"location",
+		"status",
+		"priority",
+		"categoryId",
+	]);
+
+	const result = await complaintServices.getAllComplaintsFromDb(filters);
+
+	sendResponse(res, {
+		success: true,
+		statusCode: httpStatus.OK,
+		message: "Complaint updated successfull",
 		data: result,
 	});
 });
@@ -43,5 +63,6 @@ const updateComplaint = catchAsync(async (req: Request, res: Response) => {
 
 export const complaintControllers = {
 	createComplaint,
+	getAllComplaints,
 	updateComplaint,
 };

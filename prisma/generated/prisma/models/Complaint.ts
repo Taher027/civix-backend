@@ -39,6 +39,7 @@ export type ComplaintMinAggregateOutputType = {
   title: string | null
   short_description: string | null
   description: string | null
+  city: string | null
   location: string | null
   mapURL: string | null
   priority: $Enums.ComplaintPriority | null
@@ -56,6 +57,7 @@ export type ComplaintMaxAggregateOutputType = {
   title: string | null
   short_description: string | null
   description: string | null
+  city: string | null
   location: string | null
   mapURL: string | null
   priority: $Enums.ComplaintPriority | null
@@ -73,6 +75,7 @@ export type ComplaintCountAggregateOutputType = {
   title: number
   short_description: number
   description: number
+  city: number
   location: number
   mapURL: number
   initialImages: number
@@ -102,6 +105,7 @@ export type ComplaintMinAggregateInputType = {
   title?: true
   short_description?: true
   description?: true
+  city?: true
   location?: true
   mapURL?: true
   priority?: true
@@ -119,6 +123,7 @@ export type ComplaintMaxAggregateInputType = {
   title?: true
   short_description?: true
   description?: true
+  city?: true
   location?: true
   mapURL?: true
   priority?: true
@@ -136,6 +141,7 @@ export type ComplaintCountAggregateInputType = {
   title?: true
   short_description?: true
   description?: true
+  city?: true
   location?: true
   mapURL?: true
   initialImages?: true
@@ -242,6 +248,7 @@ export type ComplaintGroupByOutputType = {
   title: string
   short_description: string
   description: string | null
+  city: string
   location: string
   mapURL: string | null
   initialImages: string[]
@@ -284,6 +291,7 @@ export type ComplaintWhereInput = {
   title?: Prisma.StringFilter<"Complaint"> | string
   short_description?: Prisma.StringFilter<"Complaint"> | string
   description?: Prisma.StringNullableFilter<"Complaint"> | string | null
+  city?: Prisma.StringFilter<"Complaint"> | string
   location?: Prisma.StringFilter<"Complaint"> | string
   mapURL?: Prisma.StringNullableFilter<"Complaint"> | string | null
   initialImages?: Prisma.StringNullableListFilter<"Complaint">
@@ -306,6 +314,7 @@ export type ComplaintOrderByWithRelationInput = {
   title?: Prisma.SortOrder
   short_description?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
+  city?: Prisma.SortOrder
   location?: Prisma.SortOrder
   mapURL?: Prisma.SortOrderInput | Prisma.SortOrder
   initialImages?: Prisma.SortOrder
@@ -332,6 +341,7 @@ export type ComplaintWhereUniqueInput = Prisma.AtLeast<{
   title?: Prisma.StringFilter<"Complaint"> | string
   short_description?: Prisma.StringFilter<"Complaint"> | string
   description?: Prisma.StringNullableFilter<"Complaint"> | string | null
+  city?: Prisma.StringFilter<"Complaint"> | string
   location?: Prisma.StringFilter<"Complaint"> | string
   mapURL?: Prisma.StringNullableFilter<"Complaint"> | string | null
   initialImages?: Prisma.StringNullableListFilter<"Complaint">
@@ -354,6 +364,7 @@ export type ComplaintOrderByWithAggregationInput = {
   title?: Prisma.SortOrder
   short_description?: Prisma.SortOrder
   description?: Prisma.SortOrderInput | Prisma.SortOrder
+  city?: Prisma.SortOrder
   location?: Prisma.SortOrder
   mapURL?: Prisma.SortOrderInput | Prisma.SortOrder
   initialImages?: Prisma.SortOrder
@@ -381,6 +392,7 @@ export type ComplaintScalarWhereWithAggregatesInput = {
   title?: Prisma.StringWithAggregatesFilter<"Complaint"> | string
   short_description?: Prisma.StringWithAggregatesFilter<"Complaint"> | string
   description?: Prisma.StringNullableWithAggregatesFilter<"Complaint"> | string | null
+  city?: Prisma.StringWithAggregatesFilter<"Complaint"> | string
   location?: Prisma.StringWithAggregatesFilter<"Complaint"> | string
   mapURL?: Prisma.StringNullableWithAggregatesFilter<"Complaint"> | string | null
   initialImages?: Prisma.StringNullableListFilter<"Complaint">
@@ -400,6 +412,7 @@ export type ComplaintCreateInput = {
   title: string
   short_description: string
   description?: string | null
+  city: string
   location: string
   mapURL?: string | null
   initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
@@ -420,6 +433,7 @@ export type ComplaintUncheckedCreateInput = {
   title: string
   short_description: string
   description?: string | null
+  city: string
   location: string
   mapURL?: string | null
   initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
@@ -440,6 +454,7 @@ export type ComplaintUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
@@ -460,6 +475,7 @@ export type ComplaintUncheckedUpdateInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
@@ -480,6 +496,7 @@ export type ComplaintCreateManyInput = {
   title: string
   short_description: string
   description?: string | null
+  city: string
   location: string
   mapURL?: string | null
   initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
@@ -499,6 +516,7 @@ export type ComplaintUpdateManyMutationInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
@@ -516,6 +534,7 @@ export type ComplaintUncheckedUpdateManyInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
@@ -555,6 +574,7 @@ export type ComplaintCountOrderByAggregateInput = {
   title?: Prisma.SortOrder
   short_description?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  city?: Prisma.SortOrder
   location?: Prisma.SortOrder
   mapURL?: Prisma.SortOrder
   initialImages?: Prisma.SortOrder
@@ -578,6 +598,7 @@ export type ComplaintMaxOrderByAggregateInput = {
   title?: Prisma.SortOrder
   short_description?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  city?: Prisma.SortOrder
   location?: Prisma.SortOrder
   mapURL?: Prisma.SortOrder
   priority?: Prisma.SortOrder
@@ -595,6 +616,7 @@ export type ComplaintMinOrderByAggregateInput = {
   title?: Prisma.SortOrder
   short_description?: Prisma.SortOrder
   description?: Prisma.SortOrder
+  city?: Prisma.SortOrder
   location?: Prisma.SortOrder
   mapURL?: Prisma.SortOrder
   priority?: Prisma.SortOrder
@@ -756,6 +778,7 @@ export type ComplaintCreateWithoutCategoryInput = {
   title: string
   short_description: string
   description?: string | null
+  city: string
   location: string
   mapURL?: string | null
   initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
@@ -775,6 +798,7 @@ export type ComplaintUncheckedCreateWithoutCategoryInput = {
   title: string
   short_description: string
   description?: string | null
+  city: string
   location: string
   mapURL?: string | null
   initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
@@ -823,6 +847,7 @@ export type ComplaintScalarWhereInput = {
   title?: Prisma.StringFilter<"Complaint"> | string
   short_description?: Prisma.StringFilter<"Complaint"> | string
   description?: Prisma.StringNullableFilter<"Complaint"> | string | null
+  city?: Prisma.StringFilter<"Complaint"> | string
   location?: Prisma.StringFilter<"Complaint"> | string
   mapURL?: Prisma.StringNullableFilter<"Complaint"> | string | null
   initialImages?: Prisma.StringNullableListFilter<"Complaint">
@@ -842,6 +867,7 @@ export type ComplaintCreateWithoutComplaint_commentInput = {
   title: string
   short_description: string
   description?: string | null
+  city: string
   location: string
   mapURL?: string | null
   initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
@@ -861,6 +887,7 @@ export type ComplaintUncheckedCreateWithoutComplaint_commentInput = {
   title: string
   short_description: string
   description?: string | null
+  city: string
   location: string
   mapURL?: string | null
   initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
@@ -896,6 +923,7 @@ export type ComplaintUpdateWithoutComplaint_commentInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
@@ -915,6 +943,7 @@ export type ComplaintUncheckedUpdateWithoutComplaint_commentInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
@@ -934,6 +963,7 @@ export type ComplaintCreateWithoutUserInput = {
   title: string
   short_description: string
   description?: string | null
+  city: string
   location: string
   mapURL?: string | null
   initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
@@ -953,6 +983,7 @@ export type ComplaintUncheckedCreateWithoutUserInput = {
   title: string
   short_description: string
   description?: string | null
+  city: string
   location: string
   mapURL?: string | null
   initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
@@ -998,6 +1029,7 @@ export type ComplaintCreateManyCategoryInput = {
   title: string
   short_description: string
   description?: string | null
+  city: string
   location: string
   mapURL?: string | null
   initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
@@ -1016,6 +1048,7 @@ export type ComplaintUpdateWithoutCategoryInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
@@ -1035,6 +1068,7 @@ export type ComplaintUncheckedUpdateWithoutCategoryInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
@@ -1054,6 +1088,7 @@ export type ComplaintUncheckedUpdateManyWithoutCategoryInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
@@ -1072,6 +1107,7 @@ export type ComplaintCreateManyUserInput = {
   title: string
   short_description: string
   description?: string | null
+  city: string
   location: string
   mapURL?: string | null
   initialImages?: Prisma.ComplaintCreateinitialImagesInput | string[]
@@ -1090,6 +1126,7 @@ export type ComplaintUpdateWithoutUserInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
@@ -1109,6 +1146,7 @@ export type ComplaintUncheckedUpdateWithoutUserInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
@@ -1128,6 +1166,7 @@ export type ComplaintUncheckedUpdateManyWithoutUserInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   short_description?: Prisma.StringFieldUpdateOperationsInput | string
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.StringFieldUpdateOperationsInput | string
   location?: Prisma.StringFieldUpdateOperationsInput | string
   mapURL?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   initialImages?: Prisma.ComplaintUpdateinitialImagesInput | string[]
@@ -1177,6 +1216,7 @@ export type ComplaintSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   title?: boolean
   short_description?: boolean
   description?: boolean
+  city?: boolean
   location?: boolean
   mapURL?: boolean
   initialImages?: boolean
@@ -1200,6 +1240,7 @@ export type ComplaintSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   title?: boolean
   short_description?: boolean
   description?: boolean
+  city?: boolean
   location?: boolean
   mapURL?: boolean
   initialImages?: boolean
@@ -1221,6 +1262,7 @@ export type ComplaintSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   title?: boolean
   short_description?: boolean
   description?: boolean
+  city?: boolean
   location?: boolean
   mapURL?: boolean
   initialImages?: boolean
@@ -1242,6 +1284,7 @@ export type ComplaintSelectScalar = {
   title?: boolean
   short_description?: boolean
   description?: boolean
+  city?: boolean
   location?: boolean
   mapURL?: boolean
   initialImages?: boolean
@@ -1256,7 +1299,7 @@ export type ComplaintSelectScalar = {
   resolvedAt?: boolean
 }
 
-export type ComplaintOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "short_description" | "description" | "location" | "mapURL" | "initialImages" | "resolvedImages" | "priority" | "status" | "createdBy" | "categoryId" | "upvotes" | "createdAt" | "updatedAt" | "resolvedAt", ExtArgs["result"]["complaint"]>
+export type ComplaintOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "short_description" | "description" | "city" | "location" | "mapURL" | "initialImages" | "resolvedImages" | "priority" | "status" | "createdBy" | "categoryId" | "upvotes" | "createdAt" | "updatedAt" | "resolvedAt", ExtArgs["result"]["complaint"]>
 export type ComplaintInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   category?: boolean | Prisma.CategoryDefaultArgs<ExtArgs>
@@ -1284,6 +1327,7 @@ export type $ComplaintPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     title: string
     short_description: string
     description: string | null
+    city: string
     location: string
     mapURL: string | null
     initialImages: string[]
@@ -1726,6 +1770,7 @@ export interface ComplaintFieldRefs {
   readonly title: Prisma.FieldRef<"Complaint", 'String'>
   readonly short_description: Prisma.FieldRef<"Complaint", 'String'>
   readonly description: Prisma.FieldRef<"Complaint", 'String'>
+  readonly city: Prisma.FieldRef<"Complaint", 'String'>
   readonly location: Prisma.FieldRef<"Complaint", 'String'>
   readonly mapURL: Prisma.FieldRef<"Complaint", 'String'>
   readonly initialImages: Prisma.FieldRef<"Complaint", 'String[]'>

@@ -11,6 +11,7 @@ router.post(
 	auth(UserRole.ADMIN, UserRole.AGENT, UserRole.CITIZEN),
 	complaintControllers.createComplaint,
 );
+router.get("/complaints", complaintControllers.getAllComplaints);
 router.patch(
 	"/update-complaint/:id",
 	validateRequest(compaintZodSchemas.updatedComplaintSchema),

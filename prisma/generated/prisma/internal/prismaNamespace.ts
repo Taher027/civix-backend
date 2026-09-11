@@ -934,6 +934,7 @@ export const ComplaintScalarFieldEnum = {
   title: 'title',
   short_description: 'short_description',
   description: 'description',
+  city: 'city',
   location: 'location',
   mapURL: 'mapURL',
   initialImages: 'initialImages',

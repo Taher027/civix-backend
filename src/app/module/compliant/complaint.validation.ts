@@ -11,6 +11,7 @@ const createComplaintSchema = z
 		short_description: z.string("Short description is required"),
 
 		description: z.string().optional(),
+		city: z.string("City is required"),
 
 		location: z.string("Location is required"),
 
@@ -32,6 +33,7 @@ const updatedComplaintSchema = z
 		short_description: z.string("Short description is required").optional(),
 
 		description: z.string().optional(),
+		city: z.string().optional(),
 
 		location: z.string("Location is required").optional(),
 
