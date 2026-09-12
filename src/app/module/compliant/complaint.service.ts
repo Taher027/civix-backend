@@ -102,6 +102,32 @@ const getAllComplaintsFromDb = async (filters: TComplaintFilters) => {
 	});
 	return allComplaints;
 };
+const getSingleComplaintFromDb = async (id: string) => {
+	const complaint = await prisma.complaint.findUniqueOrThrow({
+		where: { id },
+		include: { category: true },
+	});
+	return complaint;
+};
+const increamentComplaintVotes = async (id: string) => {
+	const existingComplaint = await prisma.complaint.findFirst({
+		where: { id },
+		select: { id: true, upvotes: true },
+	});
+	if (!existingComplaint) {
+		throw new AppError(httpStatus.NOT_FOUND, "Complaint not found !");
+	}
+
+	const updatedComplaint = await prisma.complaint.update({
+		where: { id },
+		data: {
+			upvotes: {
+				increment: 1,
+			},
+		},
+	});
+	return updatedComplaint;
+};
 const updateComplaintToDB = async (
 	payload: IUpdateComplaintInput,
 	id: string,
@@ -203,6 +229,8 @@ const deleteComplaint = async (id: string) => {
 export const complaintServices = {
 	createComplaintToDB,
 	getAllComplaintsFromDb,
+	getSingleComplaintFromDb,
+	increamentComplaintVotes,
 	updateComplaintToDB,
 	updateCompliantStatus,
 	deleteComplaint,

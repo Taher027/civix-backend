@@ -30,7 +30,7 @@ app.use("/api/user", userRoute);
 app.use("/api/auth", authRouter);
 app.use("/api/category", categoryRouter);
 
-app.use("/api/complaint", compaintRoute);
+app.use("/api/complaints", compaintRoute);
 app.use(globalErrorHandler);
 app.use(notFound);
 

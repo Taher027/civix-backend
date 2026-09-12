@@ -21,6 +21,7 @@ const createComplaint = catchAsync(async (req: Request, res: Response) => {
 		data: result,
 	});
 });
+
 const getAllComplaints = catchAsync(async (req: Request, res: Response) => {
 	const filters = pick(req.query, [
 		"title",
@@ -37,6 +38,18 @@ const getAllComplaints = catchAsync(async (req: Request, res: Response) => {
 		success: true,
 		statusCode: httpStatus.OK,
 		message: "All Complaint retrieved successfull",
+		data: result,
+	});
+});
+const getSingleComplaint = catchAsync(async (req: Request, res: Response) => {
+	const { id } = req.params;
+
+	const result = await complaintServices.getSingleComplaintFromDb(id as string);
+
+	sendResponse(res, {
+		success: true,
+		statusCode: httpStatus.OK,
+		message: "Complaint retrieved successfull",
 		data: result,
 	});
 });
@@ -60,6 +73,25 @@ const updateComplaint = catchAsync(async (req: Request, res: Response) => {
 		data: result,
 	});
 });
+const updatedComplaintVotes = catchAsync(
+	async (req: Request, res: Response) => {
+		const { id } = req.params;
+		const user = req.user;
+		if (!user) {
+			throw new AppError(httpStatus.UNAUTHORIZED, "Unauthorized Access!");
+		}
+		const result = await complaintServices.increamentComplaintVotes(
+			id as string,
+		);
+
+		sendResponse(res, {
+			success: true,
+			statusCode: httpStatus.OK,
+			message: "Complaint vote updated successfull",
+			data: result,
+		});
+	},
+);
 const updatedComplaintStatus = catchAsync(
 	async (req: Request, res: Response) => {
 		const { id } = req.params;
@@ -91,7 +123,9 @@ const deletedComplaint = catchAsync(async (req: Request, res: Response) => {
 export const complaintControllers = {
 	createComplaint,
 	getAllComplaints,
+	getSingleComplaint,
 	updateComplaint,
+	updatedComplaintVotes,
 	updatedComplaintStatus,
 	deletedComplaint,
 };
