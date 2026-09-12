@@ -13,5 +13,15 @@ router.post(
 	auth(UserRole.ADMIN, UserRole.AGENT, UserRole.CITIZEN),
 	complaintCommentControllers.createComplaintComment,
 );
+router.patch(
+	"/:id",
+	auth(UserRole.ADMIN, UserRole.AGENT, UserRole.CITIZEN),
+	complaintCommentControllers.updateComplaintComment,
+);
+router.delete(
+	"/:id",
+	auth(UserRole.ADMIN, UserRole.AGENT, UserRole.CITIZEN),
+	complaintCommentControllers.deleteComplaintComment,
+);
 
 export const complaintCommentRoutes = router;
