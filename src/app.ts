@@ -12,6 +12,7 @@ import { authRouter } from "./app/module/auth/auth.route";
 import globalErrorHandler from "./app/middleware/globalErrorHandler";
 import { compaintRoute } from "./app/module/compliant/complaint.route";
 import { categoryRouter } from "./app/module/category/category.route";
+import { complaintCommentRoutes } from "./app/module/complaint_comment/complaint_comment.route";
 const app: Application = express();
 app.use(
 	cors({
@@ -31,6 +32,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/category", categoryRouter);
 
 app.use("/api/complaints", compaintRoute);
+app.use("/api/complaint-comments", complaintCommentRoutes);
 app.use(globalErrorHandler);
 app.use(notFound);
 
