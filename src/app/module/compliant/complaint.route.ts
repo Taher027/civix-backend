@@ -18,5 +18,10 @@ router.patch(
 	auth(UserRole.ADMIN, UserRole.AGENT, UserRole.CITIZEN),
 	complaintControllers.updateComplaint,
 );
-
+router.patch(
+	"/update-complaint-status/:id",
+	auth(UserRole.ADMIN, UserRole.AGENT, UserRole.CITIZEN),
+	complaintControllers.updatedComplaintStatus,
+);
+router.delete("/delete-complaint/:id", complaintControllers.deletedComplaint);
 export const compaintRoute = router;

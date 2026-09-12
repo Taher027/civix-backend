@@ -25,3 +25,6 @@ export interface IUpdateComplaintInput {
 	initialImages?: string[];
 	priority?: ComplaintPriority;
 }
+export interface IStatusUpdate {
+	status: ComplaintStatus;
+}

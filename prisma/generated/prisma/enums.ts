@@ -32,7 +32,8 @@ export const ComplaintStatus = {
   REVIEWED: 'REVIEWED',
   IN_PROGRESS: 'IN_PROGRESS',
   RESOLVED: 'RESOLVED',
-  REJECTED: 'REJECTED'
+  REJECTED: 'REJECTED',
+  DELETED: 'DELETED'
 } as const
 
 export type ComplaintStatus = (typeof ComplaintStatus)[keyof typeof ComplaintStatus]

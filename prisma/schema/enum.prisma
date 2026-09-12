@@ -14,6 +14,7 @@ enum ComplaintStatus {
   IN_PROGRESS
   RESOLVED
   REJECTED
+  DELETED
 }
 enum ComplaintPriority {
   LOW

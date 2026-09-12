@@ -4,9 +4,13 @@ import type { RequestUser } from "../../middleware/auth";
 import httpStatus from "http-status";
 import type {
 	ICreateComplaintInput,
+	IStatusUpdate,
 	IUpdateComplaintInput,
 } from "./complaint.interface";
-import type { Prisma } from "../../../../prisma/generated/prisma/client";
+import {
+	ComplaintStatus,
+	type Prisma,
+} from "../../../../prisma/generated/prisma/client";
 import type { TComplaintFilters } from "../../../shared/pick";
 
 const createComplaintToDB = async (
@@ -46,6 +50,11 @@ const getAllComplaintsFromDb = async (filters: TComplaintFilters) => {
 	const { title, city, location, status, priority, categoryId, searchTerm } =
 		filters;
 	const andConditions: Prisma.ComplaintWhereInput[] = [];
+	andConditions.push({
+		status: {
+			not: "DELETED",
+		},
+	});
 	if (searchTerm) {
 		andConditions.push({
 			OR: [
@@ -104,6 +113,7 @@ const updateComplaintToDB = async (
 		},
 		select: {
 			createdBy: true,
+			status: true,
 		},
 	});
 	if (!existingComplaint) {
@@ -111,6 +121,9 @@ const updateComplaintToDB = async (
 	}
 	if (user.userID !== existingComplaint.createdBy) {
 		throw new AppError(httpStatus.UNAUTHORIZED, "Unauthorized Access!");
+	}
+	if (existingComplaint.status === ComplaintStatus.DELETED) {
+		throw new AppError(httpStatus.BAD_REQUEST, "Complaint not Found!");
 	}
 	const {
 		title,
@@ -137,9 +150,60 @@ const updateComplaintToDB = async (
 
 	return updatedComplaint;
 };
+const updateCompliantStatus = async (id: string, payload: IStatusUpdate) => {
+	const existingComplaint = await prisma.complaint.findFirst({
+		where: { id: id },
+		select: {
+			id: true,
+			title: true,
+			status: true,
+		},
+	});
+	if (!existingComplaint) {
+		throw new AppError(httpStatus.NOT_FOUND, "compalint not found!");
+	}
+
+	if (existingComplaint.status === ComplaintStatus.REJECTED) {
+		throw new AppError(httpStatus.NOT_FOUND, "Compalint already rejected");
+	}
+	if (existingComplaint.status === ComplaintStatus.DELETED) {
+		throw new AppError(httpStatus.NOT_FOUND, "Compalint not found");
+	}
+	if (existingComplaint.status === ComplaintStatus.RESOLVED) {
+		throw new AppError(httpStatus.NOT_FOUND, "Compalint already resolved");
+	}
+	const upadtedStatus = await prisma.complaint.update({
+		where: { id },
+		data: {
+			status: payload.status,
+		},
+	});
+	return upadtedStatus;
+};
+const deleteComplaint = async (id: string) => {
+	const existingComplaint = await prisma.complaint.findFirst({
+		where: { id: id },
+		select: {
+			id: true,
+		},
+	});
+	if (!existingComplaint) {
+		throw new AppError(httpStatus.NOT_FOUND, "Complaint not found!");
+	}
+
+	const deletedComplaint = await prisma.complaint.update({
+		where: { id },
+		data: {
+			status: ComplaintStatus.DELETED,
+		},
+	});
+	return deletedComplaint;
+};
 
 export const complaintServices = {
 	createComplaintToDB,
 	getAllComplaintsFromDb,
 	updateComplaintToDB,
+	updateCompliantStatus,
+	deleteComplaint,
 };
