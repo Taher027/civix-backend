@@ -11,7 +11,7 @@
 
 export const UserRole = {
   CITIZEN: 'CITIZEN',
-  AGENT: 'AGENT',
+  VOLUNTEER: 'VOLUNTEER',
   ADMIN: 'ADMIN'
 } as const
 
@@ -56,3 +56,13 @@ export const Complaint_CommentStatus = {
 } as const
 
 export type Complaint_CommentStatus = (typeof Complaint_CommentStatus)[keyof typeof Complaint_CommentStatus]
+
+
+export const PaymentStatus = {
+  UNPAID: 'UNPAID',
+  PAID: 'PAID',
+  FAILED: 'FAILED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]

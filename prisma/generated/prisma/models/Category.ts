@@ -175,7 +175,6 @@ export type CategoryWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Category"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Category"> | Date | string
   complaint?: Prisma.ComplaintListRelationFilter
-  service?: Prisma.ServiceListRelationFilter
 }
 
 export type CategoryOrderByWithRelationInput = {
@@ -184,7 +183,6 @@ export type CategoryOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   complaint?: Prisma.ComplaintOrderByRelationAggregateInput
-  service?: Prisma.ServiceOrderByRelationAggregateInput
 }
 
 export type CategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -196,7 +194,6 @@ export type CategoryWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Category"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Category"> | Date | string
   complaint?: Prisma.ComplaintListRelationFilter
-  service?: Prisma.ServiceListRelationFilter
 }, "id" | "title">
 
 export type CategoryOrderByWithAggregationInput = {
@@ -225,7 +222,6 @@ export type CategoryCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   complaint?: Prisma.ComplaintCreateNestedManyWithoutCategoryInput
-  service?: Prisma.ServiceCreateNestedManyWithoutCategoryInput
 }
 
 export type CategoryUncheckedCreateInput = {
@@ -234,7 +230,6 @@ export type CategoryUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   complaint?: Prisma.ComplaintUncheckedCreateNestedManyWithoutCategoryInput
-  service?: Prisma.ServiceUncheckedCreateNestedManyWithoutCategoryInput
 }
 
 export type CategoryUpdateInput = {
@@ -243,7 +238,6 @@ export type CategoryUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   complaint?: Prisma.ComplaintUpdateManyWithoutCategoryNestedInput
-  service?: Prisma.ServiceUpdateManyWithoutCategoryNestedInput
 }
 
 export type CategoryUncheckedUpdateInput = {
@@ -252,7 +246,6 @@ export type CategoryUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   complaint?: Prisma.ComplaintUncheckedUpdateManyWithoutCategoryNestedInput
-  service?: Prisma.ServiceUncheckedUpdateManyWithoutCategoryNestedInput
 }
 
 export type CategoryCreateManyInput = {
@@ -324,26 +317,11 @@ export type CategoryUpdateOneRequiredWithoutComplaintNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CategoryUpdateToOneWithWhereWithoutComplaintInput, Prisma.CategoryUpdateWithoutComplaintInput>, Prisma.CategoryUncheckedUpdateWithoutComplaintInput>
 }
 
-export type CategoryCreateNestedOneWithoutServiceInput = {
-  create?: Prisma.XOR<Prisma.CategoryCreateWithoutServiceInput, Prisma.CategoryUncheckedCreateWithoutServiceInput>
-  connectOrCreate?: Prisma.CategoryCreateOrConnectWithoutServiceInput
-  connect?: Prisma.CategoryWhereUniqueInput
-}
-
-export type CategoryUpdateOneRequiredWithoutServiceNestedInput = {
-  create?: Prisma.XOR<Prisma.CategoryCreateWithoutServiceInput, Prisma.CategoryUncheckedCreateWithoutServiceInput>
-  connectOrCreate?: Prisma.CategoryCreateOrConnectWithoutServiceInput
-  upsert?: Prisma.CategoryUpsertWithoutServiceInput
-  connect?: Prisma.CategoryWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.CategoryUpdateToOneWithWhereWithoutServiceInput, Prisma.CategoryUpdateWithoutServiceInput>, Prisma.CategoryUncheckedUpdateWithoutServiceInput>
-}
-
 export type CategoryCreateWithoutComplaintInput = {
   id?: string
   title: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  service?: Prisma.ServiceCreateNestedManyWithoutCategoryInput
 }
 
 export type CategoryUncheckedCreateWithoutComplaintInput = {
@@ -351,7 +329,6 @@ export type CategoryUncheckedCreateWithoutComplaintInput = {
   title: string
   createdAt?: Date | string
   updatedAt?: Date | string
-  service?: Prisma.ServiceUncheckedCreateNestedManyWithoutCategoryInput
 }
 
 export type CategoryCreateOrConnectWithoutComplaintInput = {
@@ -375,7 +352,6 @@ export type CategoryUpdateWithoutComplaintInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  service?: Prisma.ServiceUpdateManyWithoutCategoryNestedInput
 }
 
 export type CategoryUncheckedUpdateWithoutComplaintInput = {
@@ -383,55 +359,6 @@ export type CategoryUncheckedUpdateWithoutComplaintInput = {
   title?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  service?: Prisma.ServiceUncheckedUpdateManyWithoutCategoryNestedInput
-}
-
-export type CategoryCreateWithoutServiceInput = {
-  id?: string
-  title: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  complaint?: Prisma.ComplaintCreateNestedManyWithoutCategoryInput
-}
-
-export type CategoryUncheckedCreateWithoutServiceInput = {
-  id?: string
-  title: string
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  complaint?: Prisma.ComplaintUncheckedCreateNestedManyWithoutCategoryInput
-}
-
-export type CategoryCreateOrConnectWithoutServiceInput = {
-  where: Prisma.CategoryWhereUniqueInput
-  create: Prisma.XOR<Prisma.CategoryCreateWithoutServiceInput, Prisma.CategoryUncheckedCreateWithoutServiceInput>
-}
-
-export type CategoryUpsertWithoutServiceInput = {
-  update: Prisma.XOR<Prisma.CategoryUpdateWithoutServiceInput, Prisma.CategoryUncheckedUpdateWithoutServiceInput>
-  create: Prisma.XOR<Prisma.CategoryCreateWithoutServiceInput, Prisma.CategoryUncheckedCreateWithoutServiceInput>
-  where?: Prisma.CategoryWhereInput
-}
-
-export type CategoryUpdateToOneWithWhereWithoutServiceInput = {
-  where?: Prisma.CategoryWhereInput
-  data: Prisma.XOR<Prisma.CategoryUpdateWithoutServiceInput, Prisma.CategoryUncheckedUpdateWithoutServiceInput>
-}
-
-export type CategoryUpdateWithoutServiceInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  complaint?: Prisma.ComplaintUpdateManyWithoutCategoryNestedInput
-}
-
-export type CategoryUncheckedUpdateWithoutServiceInput = {
-  id?: Prisma.StringFieldUpdateOperationsInput | string
-  title?: Prisma.StringFieldUpdateOperationsInput | string
-  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  complaint?: Prisma.ComplaintUncheckedUpdateManyWithoutCategoryNestedInput
 }
 
 
@@ -441,12 +368,10 @@ export type CategoryUncheckedUpdateWithoutServiceInput = {
 
 export type CategoryCountOutputType = {
   complaint: number
-  service: number
 }
 
 export type CategoryCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   complaint?: boolean | CategoryCountOutputTypeCountComplaintArgs
-  service?: boolean | CategoryCountOutputTypeCountServiceArgs
 }
 
 /**
@@ -466,13 +391,6 @@ export type CategoryCountOutputTypeCountComplaintArgs<ExtArgs extends runtime.Ty
   where?: Prisma.ComplaintWhereInput
 }
 
-/**
- * CategoryCountOutputType without action
- */
-export type CategoryCountOutputTypeCountServiceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.ServiceWhereInput
-}
-
 
 export type CategorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -480,7 +398,6 @@ export type CategorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   createdAt?: boolean
   updatedAt?: boolean
   complaint?: boolean | Prisma.Category$complaintArgs<ExtArgs>
-  service?: boolean | Prisma.Category$serviceArgs<ExtArgs>
   _count?: boolean | Prisma.CategoryCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["category"]>
 
@@ -508,7 +425,6 @@ export type CategorySelectScalar = {
 export type CategoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "title" | "createdAt" | "updatedAt", ExtArgs["result"]["category"]>
 export type CategoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   complaint?: boolean | Prisma.Category$complaintArgs<ExtArgs>
-  service?: boolean | Prisma.Category$serviceArgs<ExtArgs>
   _count?: boolean | Prisma.CategoryCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CategoryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -518,7 +434,6 @@ export type $CategoryPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   name: "Category"
   objects: {
     complaint: Prisma.$ComplaintPayload<ExtArgs>[]
-    service: Prisma.$ServicePayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -920,7 +835,6 @@ readonly fields: CategoryFieldRefs;
 export interface Prisma__CategoryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   complaint<T extends Prisma.Category$complaintArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Category$complaintArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplaintPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  service<T extends Prisma.Category$serviceArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Category$serviceArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1368,30 +1282,6 @@ export type Category$complaintArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.ComplaintScalarFieldEnum | Prisma.ComplaintScalarFieldEnum[]
-}
-
-/**
- * Category.service
- */
-export type Category$serviceArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the Service
-   */
-  select?: Prisma.ServiceSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the Service
-   */
-  omit?: Prisma.ServiceOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.ServiceInclude<ExtArgs> | null
-  where?: Prisma.ServiceWhereInput
-  orderBy?: Prisma.ServiceOrderByWithRelationInput | Prisma.ServiceOrderByWithRelationInput[]
-  cursor?: Prisma.ServiceWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.ServiceScalarFieldEnum | Prisma.ServiceScalarFieldEnum[]
 }
 
 /**

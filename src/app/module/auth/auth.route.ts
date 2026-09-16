@@ -7,13 +7,23 @@ import { authZodValidations } from "./auth.validation";
 
 const router = Router();
 router.post(
+	"/register-user",
+	validateRequest(authZodValidations.zodUserRegisterSchema),
+	authControllers.userRegister,
+);
+router.post(
+	"/verify-email",
+	validateRequest(authZodValidations.zodUserEmailVerifySchema),
+	authControllers.verifyUserEmail,
+);
+router.post(
 	"/login",
 	validateRequest(authZodValidations.zodUserLoginSchema),
 	authControllers.login,
 );
 router.get(
 	"/getme",
-	auth(UserRole.ADMIN, UserRole.AGENT, UserRole.CITIZEN),
+	auth(UserRole.ADMIN, UserRole.VOLUNTEER, UserRole.CITIZEN),
 	authControllers.getMe,
 );
 

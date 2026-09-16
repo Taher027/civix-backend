@@ -8,3 +8,13 @@ export interface IRequestUser {
 	email: string;
 	role: string;
 }
+export interface IVerifyEmailPayload {
+	email: string;
+	otp: string;
+}
+export interface IRegisterPatientPayload {
+	name: string;
+	email: string;
+	password: string;
+	phone: string;
+}

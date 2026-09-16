@@ -17,7 +17,7 @@ model User {
   updatedAt          DateTime     @updatedAt
   complaint           Complaint[]
   complaint_comments Complaint_Comment[]
-  review             Review[]
+  payments           Payment[]
 
   @@unique([email])
   @@map("users")

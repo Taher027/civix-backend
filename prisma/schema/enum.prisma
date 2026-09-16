@@ -1,6 +1,6 @@
 enum UserRole{
     CITIZEN
-    AGENT
+    VOLUNTEER
     ADMIN
 }
 enum UserStatus {
@@ -28,4 +28,9 @@ enum Complaint_CommentStatus {
   REJECTED
   DELETED
 }
-
+enum PaymentStatus {
+  UNPAID
+  PAID
+  FAILED
+  CANCELLED
+}

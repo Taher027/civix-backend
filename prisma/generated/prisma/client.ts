@@ -57,15 +57,10 @@ export type Complaint_Comment = Prisma.Complaint_CommentModel
  */
 export type Complaint = Prisma.ComplaintModel
 /**
- * Model Review
+ * Model Payment
  * 
  */
-export type Review = Prisma.ReviewModel
-/**
- * Model Service
- * 
- */
-export type Service = Prisma.ServiceModel
+export type Payment = Prisma.PaymentModel
 /**
  * Model User
  * 

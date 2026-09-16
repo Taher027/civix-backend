@@ -10,17 +10,17 @@ router.get(
 );
 router.post(
 	"/:complaintID",
-	auth(UserRole.ADMIN, UserRole.AGENT, UserRole.CITIZEN),
+	auth(UserRole.ADMIN, UserRole.VOLUNTEER, UserRole.CITIZEN),
 	complaintCommentControllers.createComplaintComment,
 );
 router.patch(
 	"/:id",
-	auth(UserRole.ADMIN, UserRole.AGENT, UserRole.CITIZEN),
+	auth(UserRole.ADMIN, UserRole.VOLUNTEER, UserRole.CITIZEN),
 	complaintCommentControllers.updateComplaintComment,
 );
 router.delete(
 	"/:id",
-	auth(UserRole.ADMIN, UserRole.AGENT, UserRole.CITIZEN),
+	auth(UserRole.ADMIN, UserRole.VOLUNTEER, UserRole.CITIZEN),
 	complaintCommentControllers.deleteComplaintComment,
 );
 

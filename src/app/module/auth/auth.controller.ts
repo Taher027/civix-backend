@@ -5,7 +5,49 @@ import { authServices } from "./auth.service";
 import httpStatus from "http-status";
 import { AppError } from "../../../utils/AppError";
 import type { IRequestUser } from "./auth.interface";
+const userRegister = catchAsync(async (req: Request, res: Response) => {
+	const payload = req.body;
 
+	const result = await authServices.userRegisterToDB(payload);
+
+	sendResponse(res, {
+		statusCode: httpStatus.CREATED,
+		success: true,
+		message: "Verification OTP Sent",
+		data: result,
+	});
+});
+const verifyUserEmail = catchAsync(async (req: Request, res: Response) => {
+	const payload = req.body;
+
+	const result = await authServices.verifyUserEmail(payload);
+
+	const { accessToken, refreshToken, createUser } = result;
+
+	res.cookie("accessToken", accessToken, {
+		httpOnly: true,
+		secure: false,
+		sameSite: "none",
+		maxAge: 1000 * 60 * 60 * 24,
+	});
+	res.cookie("refreshToken", refreshToken, {
+		httpOnly: true,
+		secure: false,
+		sameSite: "none",
+		maxAge: 1000 * 60 * 60 * 24 * 7,
+	});
+
+	sendResponse(res, {
+		statusCode: httpStatus.CREATED,
+		success: true,
+		message: "Email Verified Successfully",
+		data: {
+			accessToken,
+			refreshToken,
+			createUser,
+		},
+	});
+});
 const login = catchAsync(async (req: Request, res: Response) => {
 	const payload = req.body;
 	const result = await authServices.loginToDB(payload);
@@ -86,6 +128,8 @@ const getMe = catchAsync(async (req: Request, res: Response) => {
 });
 
 export const authControllers = {
+	userRegister,
+	verifyUserEmail,
 	login,
 	refreshToken,
 	getMe,

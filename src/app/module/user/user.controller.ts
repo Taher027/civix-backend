@@ -5,19 +5,6 @@ import httpStatus from "http-status";
 import { userServices } from "./user.service";
 import { AppError } from "../../../utils/AppError";
 
-const userRegister = catchAsync(async (req: Request, res: Response) => {
-	const payload = req.body;
-
-	const result = await userServices.userRegisterToDB(payload);
-
-	sendResponse(res, {
-		success: true,
-		statusCode: httpStatus.CREATED,
-		message: "User Register SuccessFull",
-		data: result,
-	});
-});
-
 const updateProfileImage = catchAsync(async (req: Request, res: Response) => {
 	if (!req.file) {
 		throw new AppError(httpStatus.BAD_REQUEST, "No File provided");
@@ -54,7 +41,6 @@ const updateUser = catchAsync(async (req: Request, res: Response) => {
 });
 
 export const userControllers = {
-	userRegister,
 	updateProfileImage,
 	updateUser,
 };
