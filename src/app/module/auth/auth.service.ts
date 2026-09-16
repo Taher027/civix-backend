@@ -1,8 +1,12 @@
-import { UserStatus } from "../../../../prisma/generated/prisma/enums";
+import {
+	AuthProvider,
+	UserStatus,
+} from "../../../../prisma/generated/prisma/enums";
 import { AppError } from "../../../utils/AppError";
 import { prisma } from "../../lib/prisma";
 import crypto from "crypto";
 import type {
+	IGoogleLoginPayload,
 	ILoginPayload,
 	IRequestUser,
 	IVerifyEmailPayload,
@@ -15,6 +19,8 @@ import type { JwtPayload, SignOptions } from "jsonwebtoken";
 import type { IUserRegister } from "../user/user.interface";
 import { redisClient } from "../../lib/redis";
 import { transporter } from "../../lib/nodemailer";
+import type { TokenPayload } from "google-auth-library";
+import { googleClient } from "../../lib/googleAuth";
 const userRegisterToDB = async (payload: IUserRegister) => {
 	const { password, ...userData } = payload;
 
@@ -146,7 +152,139 @@ const verifyUserEmail = async (payload: IVerifyEmailPayload) => {
 		refreshToken,
 	};
 };
+const googleLogin = async (payload: IGoogleLoginPayload) => {
+	let googleIdTokenPayload: TokenPayload | null | undefined = null;
+	try {
+		const ticket = await googleClient.verifyIdToken({
+			idToken: payload.idToken,
+			audience: config.google_client_id,
+		});
 
+		googleIdTokenPayload = ticket.getPayload();
+	} catch (error) {
+		console.log("Google ID Token Verification Failed", error);
+		throw new AppError(
+			httpStatus.UNAUTHORIZED,
+			"Invalid Or Expired Google Id Token",
+		);
+	}
+
+	if (!googleIdTokenPayload) {
+		throw new AppError(
+			httpStatus.UNAUTHORIZED,
+			"Invalid Or Expired Google Id Token",
+		);
+	}
+
+	if (!googleIdTokenPayload.email) {
+		throw new AppError(httpStatus.BAD_REQUEST, "Google Email Not Found");
+	}
+	if (!googleIdTokenPayload.name) {
+		throw new AppError(
+			httpStatus.BAD_REQUEST,
+			"Google Email User Name Not Found",
+		);
+	}
+
+	const ifUserExistWithGoogleAuth = await prisma.user.findUnique({
+		where: {
+			email: googleIdTokenPayload.email,
+			googleId: googleIdTokenPayload.sub,
+		},
+	});
+
+	let user = ifUserExistWithGoogleAuth;
+
+	if (!ifUserExistWithGoogleAuth) {
+		const ifUserExistWithCredentials = await prisma.user.findUnique({
+			where: {
+				email: googleIdTokenPayload.email,
+				authProvider: AuthProvider.CREDENTIAL,
+			},
+		});
+
+		if (ifUserExistWithCredentials) {
+			if (!ifUserExistWithCredentials.emailVerified) {
+				throw new AppError(httpStatus.FORBIDDEN, "Email Not Verified");
+			}
+
+			if (ifUserExistWithCredentials.status === UserStatus.BLOCKED) {
+				throw new AppError(httpStatus.FORBIDDEN, "User Is Blocked");
+			}
+
+			if (
+				ifUserExistWithCredentials.isDeleted ||
+				ifUserExistWithCredentials.status === UserStatus.DELETED
+			) {
+				throw new AppError(httpStatus.FORBIDDEN, "User Is Deleted");
+			}
+
+			user = await prisma.user.update({
+				where: {
+					id: ifUserExistWithCredentials.id,
+				},
+
+				data: {
+					googleId: googleIdTokenPayload.sub,
+				},
+			});
+		} else {
+			// Google Register
+			user = await prisma.user.create({
+				data: {
+					name: googleIdTokenPayload.name,
+					email: googleIdTokenPayload.email,
+					googleId: googleIdTokenPayload.sub,
+					authProvider: AuthProvider.GOOGLE,
+					emailVerified: true,
+				},
+			});
+
+			await transporter.sendMail({
+				from: config.email_sender,
+				to: user.email,
+				subject: "Welcome To Civix",
+				html: `<h1>Your email is veified</h1>`,
+			});
+		}
+	}
+
+	if (!user) {
+		throw new AppError(httpStatus.NOT_FOUND, "User Not Found");
+	}
+
+	if (user.status === UserStatus.BLOCKED) {
+		throw new AppError(httpStatus.FORBIDDEN, "User Is Blocked");
+	}
+
+	if (user.isDeleted || user.status === UserStatus.DELETED) {
+		throw new AppError(httpStatus.FORBIDDEN, "User Is Deleted");
+	}
+
+	const jwtPayload = {
+		userID: user.id,
+		name: user.name,
+		email: user.email,
+		role: user.role,
+	};
+
+	const accessToken = jwtUtils.createToken(
+		jwtPayload,
+		config.jwt_access_token_secret as string,
+		config.jwt_access_token_expireIn as SignOptions,
+	);
+
+	const refreshToken = jwtUtils.createToken(
+		jwtPayload,
+		config.jwt_refresh_token_secret as string,
+		config.jwt_refresh_token_expireIn as SignOptions,
+	);
+
+	return {
+		accessToken,
+		refreshToken,
+	};
+};
 const loginToDB = async (payload: ILoginPayload) => {
 	const { password } = payload;
 	const email = payload.email.trim().toLowerCase();
@@ -270,6 +408,7 @@ export const authServices = {
 	userRegisterToDB,
 	verifyUserEmail,
 	loginToDB,
+	googleLogin,
 	refreshToken,
 	getMe,
 };

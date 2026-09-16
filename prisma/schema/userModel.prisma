@@ -2,15 +2,17 @@ model User {
   id                 String       @id @default(uuid())
   name               String
   email              String       @db.VarChar(255)
-  password           String
+  password           String?
   emailVerified      Boolean      @default(false)
   role               UserRole     @default(CITIZEN)
-  phone              String
-  city               String
-  address            String
+  phone              String?      
+  city               String?
+  address            String?
   avatar             String?      @default("")
   avatarPublicId     String?      @default("")
   status             UserStatus   @default(ACTIVE)
+  googleId           String?      @unique
+  authProvider       AuthProvider @default(CREDENTIAL)
   isDeleted          Boolean      @default(false)
   deletedAt          DateTime?
   createdAt          DateTime     @default(now())

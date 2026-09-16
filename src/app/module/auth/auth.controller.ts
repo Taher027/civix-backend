@@ -57,13 +57,13 @@ const login = catchAsync(async (req: Request, res: Response) => {
 	res.cookie("accessToken", accessToken, {
 		httpOnly: true,
 		secure: false,
-		sameSite: "none",
+		sameSite: "lax",
 		maxAge: 1000 * 60 * 60 * 24,
 	});
 	res.cookie("refreshToken", refreshToken, {
 		httpOnly: true,
 		secure: false,
-		sameSite: "none",
+		sameSite: "lax",
 		maxAge: 1000 * 60 * 60 * 24 * 7,
 	});
 
@@ -71,6 +71,36 @@ const login = catchAsync(async (req: Request, res: Response) => {
 		success: true,
 		statusCode: httpStatus.OK,
 		message: "Login Successfull!",
+		data: {
+			accessToken,
+			refreshToken,
+		},
+	});
+});
+const googleLogin = catchAsync(async (req: Request, res: Response) => {
+	const payload = req.body;
+
+	const result = await authServices.googleLogin(payload);
+
+	const { accessToken, refreshToken } = result;
+
+	res.cookie("accessToken", accessToken, {
+		httpOnly: true,
+		secure: false,
+		sameSite: "lax",
+		maxAge: 1000 * 60 * 60 * 24,
+	});
+	res.cookie("refreshToken", refreshToken, {
+		httpOnly: true,
+		secure: false,
+		sameSite: "lax",
+		maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
+	});
+
+	sendResponse(res, {
+		statusCode: httpStatus.OK,
+		success: true,
+		message: "New tokens generated successfully",
 		data: {
 			accessToken,
 			refreshToken,
@@ -88,13 +118,13 @@ const refreshToken = catchAsync(async (req: Request, res: Response) => {
 	res.cookie("accessToken", accessToken, {
 		httpOnly: true,
 		secure: false,
-		sameSite: "none",
+		sameSite: "lax",
 		maxAge: 1000 * 60 * 60 * 24, //  1 day
 	});
 	res.cookie("refreshToken", newRefreshToken, {
 		httpOnly: true,
 		secure: false,
-		sameSite: "none",
+		sameSite: "lax",
 		maxAge: 1000 * 60 * 60 * 24 * 7, // 7 days
 	});
 
@@ -131,6 +161,7 @@ export const authControllers = {
 	userRegister,
 	verifyUserEmail,
 	login,
+	googleLogin,
 	refreshToken,
 	getMe,
 };

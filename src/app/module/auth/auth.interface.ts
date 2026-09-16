@@ -18,3 +18,7 @@ export interface IRegisterPatientPayload {
 	password: string;
 	phone: string;
 }
+
+export interface IGoogleLoginPayload {
+	idToken: string;
+}

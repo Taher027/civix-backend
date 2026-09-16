@@ -154,6 +154,8 @@ export const UserScalarFieldEnum = {
   avatar: 'avatar',
   avatarPublicId: 'avatarPublicId',
   status: 'status',
+  googleId: 'googleId',
+  authProvider: 'authProvider',
   isDeleted: 'isDeleted',
   deletedAt: 'deletedAt',
   createdAt: 'createdAt',

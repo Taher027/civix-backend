@@ -21,6 +21,7 @@ router.post(
 	validateRequest(authZodValidations.zodUserLoginSchema),
 	authControllers.login,
 );
+router.post("/google", authControllers.googleLogin);
 router.get(
 	"/getme",
 	auth(UserRole.ADMIN, UserRole.VOLUNTEER, UserRole.CITIZEN),
