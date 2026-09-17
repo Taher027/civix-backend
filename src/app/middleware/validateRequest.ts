@@ -6,6 +6,7 @@ import { AppError } from "../../utils/AppError";
 
 export const validateRequest = (zodSchema: z.ZodObject) => {
 	return catchAsync((req: Request, res: Response, next: NextFunction) => {
+		console.log(req.body, "from vaidate request");
 		const payload = req.body ?? {};
 
 		const result = zodSchema.safeParse(payload);

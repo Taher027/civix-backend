@@ -13,6 +13,7 @@ import globalErrorHandler from "./app/middleware/globalErrorHandler";
 import { compaintRoute } from "./app/module/compliant/complaint.route";
 import { categoryRouter } from "./app/module/category/category.route";
 import { complaintCommentRoutes } from "./app/module/complaint_comment/complaint_comment.route";
+import { volunteerRouter } from "./app/module/volunteer/volunteer.route";
 const app: Application = express();
 app.use(
 	cors({
@@ -29,6 +30,7 @@ app.get("/", (req: Request, res: Response) => {
 });
 app.use("/api/user", userRoute);
 app.use("/api/auth", authRouter);
+app.use("/api/volunteer", volunteerRouter);
 app.use("/api/category", categoryRouter);
 
 app.use("/api/complaints", compaintRoute);

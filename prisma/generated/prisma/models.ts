@@ -11,6 +11,8 @@
 export type * from './models/Category'
 export type * from './models/Complaint_Comment'
 export type * from './models/Complaint'
+export type * from './models/ComplaintVolunteer'
 export type * from './models/Payment'
 export type * from './models/User'
+export type * from './models/VolunteerProfile'
 export type * from './commonInputTypes'

@@ -74,3 +74,23 @@ export const PaymentStatus = {
 } as const
 
 export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]
+
+
+export const VolunteerApplicationStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type VolunteerApplicationStatus = (typeof VolunteerApplicationStatus)[keyof typeof VolunteerApplicationStatus]
+
+
+export const ComplaintVolunteerStatus = {
+  APPLIED: 'APPLIED',
+  ACCEPTED: 'ACCEPTED',
+  REJECTED: 'REJECTED',
+  SUBMITTED: 'SUBMITTED',
+  RESOLVED: 'RESOLVED'
+} as const
+
+export type ComplaintVolunteerStatus = (typeof ComplaintVolunteerStatus)[keyof typeof ComplaintVolunteerStatus]

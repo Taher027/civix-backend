@@ -54,8 +54,10 @@ export const ModelName = {
   Category: 'Category',
   Complaint_Comment: 'Complaint_Comment',
   Complaint: 'Complaint',
+  ComplaintVolunteer: 'ComplaintVolunteer',
   Payment: 'Payment',
-  User: 'User'
+  User: 'User',
+  VolunteerProfile: 'VolunteerProfile'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -121,6 +123,23 @@ export const ComplaintScalarFieldEnum = {
 export type ComplaintScalarFieldEnum = (typeof ComplaintScalarFieldEnum)[keyof typeof ComplaintScalarFieldEnum]
 
 
+export const ComplaintVolunteerScalarFieldEnum = {
+  id: 'id',
+  complaintId: 'complaintId',
+  volunteerId: 'volunteerId',
+  status: 'status',
+  message: 'message',
+  statusNote: 'statusNote',
+  solutionImages: 'solutionImages',
+  appliedAt: 'appliedAt',
+  acceptedAt: 'acceptedAt',
+  resolvedAt: 'resolvedAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ComplaintVolunteerScalarFieldEnum = (typeof ComplaintVolunteerScalarFieldEnum)[keyof typeof ComplaintVolunteerScalarFieldEnum]
+
+
 export const PaymentScalarFieldEnum = {
   id: 'id',
   status: 'status',
@@ -163,6 +182,23 @@ export const UserScalarFieldEnum = {
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const VolunteerProfileScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  bio: 'bio',
+  skills: 'skills',
+  status: 'status',
+  appliedAt: 'appliedAt',
+  reviewedAt: 'reviewedAt',
+  reviewedBy: 'reviewedBy',
+  totalResolved: 'totalResolved',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type VolunteerProfileScalarFieldEnum = (typeof VolunteerProfileScalarFieldEnum)[keyof typeof VolunteerProfileScalarFieldEnum]
 
 
 export const SortOrder = {

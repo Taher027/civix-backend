@@ -1,0 +1,22 @@
+model VolunteerProfile {
+  id            String                     @id @default(uuid())
+  userId        String                     @unique
+  user          User                       @relation(fields: [userId], references: [id])
+  bio           String?                    @db.Text
+  skills        String[]
+  status        VolunteerApplicationStatus @default(PENDING)
+  appliedAt     DateTime                   @default(now())
+  reviewedAt    DateTime?
+  reviewedBy    String?
+  totalResolved Int                        @default(0)
+  createdAt     DateTime                   @default(now())
+  updatedAt     DateTime                   @updatedAt
+  complaintApplications ComplaintVolunteer[]
+
+  @@map("volunteer_profiles")
+}
+
+
+
+
+

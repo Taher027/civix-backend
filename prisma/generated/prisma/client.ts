@@ -57,6 +57,11 @@ export type Complaint_Comment = Prisma.Complaint_CommentModel
  */
 export type Complaint = Prisma.ComplaintModel
 /**
+ * Model ComplaintVolunteer
+ * 
+ */
+export type ComplaintVolunteer = Prisma.ComplaintVolunteerModel
+/**
  * Model Payment
  * 
  */
@@ -66,3 +71,8 @@ export type Payment = Prisma.PaymentModel
  * 
  */
 export type User = Prisma.UserModel
+/**
+ * Model VolunteerProfile
+ * 
+ */
+export type VolunteerProfile = Prisma.VolunteerProfileModel

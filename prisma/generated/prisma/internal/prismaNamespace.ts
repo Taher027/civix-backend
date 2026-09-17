@@ -400,8 +400,10 @@ export const ModelName = {
   Category: 'Category',
   Complaint_Comment: 'Complaint_Comment',
   Complaint: 'Complaint',
+  ComplaintVolunteer: 'ComplaintVolunteer',
   Payment: 'Payment',
-  User: 'User'
+  User: 'User',
+  VolunteerProfile: 'VolunteerProfile'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -417,7 +419,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "category" | "complaint_Comment" | "complaint" | "payment" | "user"
+    modelProps: "category" | "complaint_Comment" | "complaint" | "complaintVolunteer" | "payment" | "user" | "volunteerProfile"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -643,6 +645,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    ComplaintVolunteer: {
+      payload: Prisma.$ComplaintVolunteerPayload<ExtArgs>
+      fields: Prisma.ComplaintVolunteerFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.ComplaintVolunteerFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintVolunteerPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.ComplaintVolunteerFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintVolunteerPayload>
+        }
+        findFirst: {
+          args: Prisma.ComplaintVolunteerFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintVolunteerPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.ComplaintVolunteerFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintVolunteerPayload>
+        }
+        findMany: {
+          args: Prisma.ComplaintVolunteerFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintVolunteerPayload>[]
+        }
+        create: {
+          args: Prisma.ComplaintVolunteerCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintVolunteerPayload>
+        }
+        createMany: {
+          args: Prisma.ComplaintVolunteerCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.ComplaintVolunteerCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintVolunteerPayload>[]
+        }
+        delete: {
+          args: Prisma.ComplaintVolunteerDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintVolunteerPayload>
+        }
+        update: {
+          args: Prisma.ComplaintVolunteerUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintVolunteerPayload>
+        }
+        deleteMany: {
+          args: Prisma.ComplaintVolunteerDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.ComplaintVolunteerUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.ComplaintVolunteerUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintVolunteerPayload>[]
+        }
+        upsert: {
+          args: Prisma.ComplaintVolunteerUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$ComplaintVolunteerPayload>
+        }
+        aggregate: {
+          args: Prisma.ComplaintVolunteerAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateComplaintVolunteer>
+        }
+        groupBy: {
+          args: Prisma.ComplaintVolunteerGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ComplaintVolunteerGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.ComplaintVolunteerCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.ComplaintVolunteerCountAggregateOutputType> | number
+        }
+      }
+    }
     Payment: {
       payload: Prisma.$PaymentPayload<ExtArgs>
       fields: Prisma.PaymentFieldRefs
@@ -791,6 +867,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    VolunteerProfile: {
+      payload: Prisma.$VolunteerProfilePayload<ExtArgs>
+      fields: Prisma.VolunteerProfileFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.VolunteerProfileFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VolunteerProfilePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.VolunteerProfileFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VolunteerProfilePayload>
+        }
+        findFirst: {
+          args: Prisma.VolunteerProfileFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VolunteerProfilePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.VolunteerProfileFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VolunteerProfilePayload>
+        }
+        findMany: {
+          args: Prisma.VolunteerProfileFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VolunteerProfilePayload>[]
+        }
+        create: {
+          args: Prisma.VolunteerProfileCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VolunteerProfilePayload>
+        }
+        createMany: {
+          args: Prisma.VolunteerProfileCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.VolunteerProfileCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VolunteerProfilePayload>[]
+        }
+        delete: {
+          args: Prisma.VolunteerProfileDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VolunteerProfilePayload>
+        }
+        update: {
+          args: Prisma.VolunteerProfileUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VolunteerProfilePayload>
+        }
+        deleteMany: {
+          args: Prisma.VolunteerProfileDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.VolunteerProfileUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.VolunteerProfileUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VolunteerProfilePayload>[]
+        }
+        upsert: {
+          args: Prisma.VolunteerProfileUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$VolunteerProfilePayload>
+        }
+        aggregate: {
+          args: Prisma.VolunteerProfileAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateVolunteerProfile>
+        }
+        groupBy: {
+          args: Prisma.VolunteerProfileGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VolunteerProfileGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.VolunteerProfileCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.VolunteerProfileCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -877,6 +1027,23 @@ export const ComplaintScalarFieldEnum = {
 export type ComplaintScalarFieldEnum = (typeof ComplaintScalarFieldEnum)[keyof typeof ComplaintScalarFieldEnum]
 
 
+export const ComplaintVolunteerScalarFieldEnum = {
+  id: 'id',
+  complaintId: 'complaintId',
+  volunteerId: 'volunteerId',
+  status: 'status',
+  message: 'message',
+  statusNote: 'statusNote',
+  solutionImages: 'solutionImages',
+  appliedAt: 'appliedAt',
+  acceptedAt: 'acceptedAt',
+  resolvedAt: 'resolvedAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ComplaintVolunteerScalarFieldEnum = (typeof ComplaintVolunteerScalarFieldEnum)[keyof typeof ComplaintVolunteerScalarFieldEnum]
+
+
 export const PaymentScalarFieldEnum = {
   id: 'id',
   status: 'status',
@@ -919,6 +1086,23 @@ export const UserScalarFieldEnum = {
 } as const
 
 export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
+
+
+export const VolunteerProfileScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  bio: 'bio',
+  skills: 'skills',
+  status: 'status',
+  appliedAt: 'appliedAt',
+  reviewedAt: 'reviewedAt',
+  reviewedBy: 'reviewedBy',
+  totalResolved: 'totalResolved',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type VolunteerProfileScalarFieldEnum = (typeof VolunteerProfileScalarFieldEnum)[keyof typeof VolunteerProfileScalarFieldEnum]
 
 
 export const SortOrder = {
@@ -1053,6 +1237,20 @@ export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel,
 
 
 /**
+ * Reference to a field of type 'ComplaintVolunteerStatus'
+ */
+export type EnumComplaintVolunteerStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ComplaintVolunteerStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'ComplaintVolunteerStatus[]'
+ */
+export type ListEnumComplaintVolunteerStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'ComplaintVolunteerStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'PaymentStatus'
  */
 export type EnumPaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentStatus'>
@@ -1140,6 +1338,20 @@ export type EnumAuthProviderFieldRefInput<$PrismaModel> = FieldRefInputType<$Pri
  * Reference to a field of type 'AuthProvider[]'
  */
 export type ListEnumAuthProviderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AuthProvider[]'>
+    
+
+
+/**
+ * Reference to a field of type 'VolunteerApplicationStatus'
+ */
+export type EnumVolunteerApplicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VolunteerApplicationStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'VolunteerApplicationStatus[]'
+ */
+export type ListEnumVolunteerApplicationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'VolunteerApplicationStatus[]'>
     
 
 
@@ -1310,8 +1522,10 @@ export type GlobalOmitConfig = {
   category?: Prisma.CategoryOmit
   complaint_Comment?: Prisma.Complaint_CommentOmit
   complaint?: Prisma.ComplaintOmit
+  complaintVolunteer?: Prisma.ComplaintVolunteerOmit
   payment?: Prisma.PaymentOmit
   user?: Prisma.UserOmit
+  volunteerProfile?: Prisma.VolunteerProfileOmit
 }
 
 /* Types for Logging */

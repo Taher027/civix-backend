@@ -1,0 +1,22 @@
+model ComplaintVolunteer {
+  id             String                   @id @default(uuid())
+  complaintId    String
+  complaint      Complaint                @relation(fields: [complaintId], references: [id])
+  volunteerId    String
+  volunteer      VolunteerProfile         @relation(fields: [volunteerId], references: [id])
+  status         ComplaintVolunteerStatus @default(APPLIED)
+  message        String?                  @db.Text
+  statusNote     String?                  @db.Text
+  solutionImages String[]
+  appliedAt      DateTime                 @default(now())
+  acceptedAt     DateTime?
+  resolvedAt     DateTime?
+  updatedAt      DateTime                 @updatedAt
+
+  @@unique([complaintId, volunteerId])
+  @@index([complaintId])
+  @@index([volunteerId])
+  @@map("complaint_volunteers")
+}
+
+

@@ -15,7 +15,7 @@ model Complaint {
   categoryId       String
   category         Category  @relation(fields:[categoryId], references: [id])
   upvotes          Int       @default(0)
-
+ complaintVolunteers ComplaintVolunteer[]
   complaint_comment Complaint_Comment[]
 
   createdAt        DateTime  @default(now())

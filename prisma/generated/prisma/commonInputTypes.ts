@@ -213,6 +213,23 @@ export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>
 }
 
+export type EnumComplaintVolunteerStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.ComplaintVolunteerStatus | Prisma.EnumComplaintVolunteerStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ComplaintVolunteerStatus[] | Prisma.ListEnumComplaintVolunteerStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ComplaintVolunteerStatus[] | Prisma.ListEnumComplaintVolunteerStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumComplaintVolunteerStatusFilter<$PrismaModel> | $Enums.ComplaintVolunteerStatus
+}
+
+export type EnumComplaintVolunteerStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ComplaintVolunteerStatus | Prisma.EnumComplaintVolunteerStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ComplaintVolunteerStatus[] | Prisma.ListEnumComplaintVolunteerStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ComplaintVolunteerStatus[] | Prisma.ListEnumComplaintVolunteerStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumComplaintVolunteerStatusWithAggregatesFilter<$PrismaModel> | $Enums.ComplaintVolunteerStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumComplaintVolunteerStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumComplaintVolunteerStatusFilter<$PrismaModel>
+}
+
 export type EnumPaymentStatusFilter<$PrismaModel = never> = {
   equals?: $Enums.PaymentStatus | Prisma.EnumPaymentStatusFieldRefInput<$PrismaModel>
   in?: $Enums.PaymentStatus[] | Prisma.ListEnumPaymentStatusFieldRefInput<$PrismaModel>
@@ -370,6 +387,23 @@ export type EnumAuthProviderWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumAuthProviderFilter<$PrismaModel>
   _max?: Prisma.NestedEnumAuthProviderFilter<$PrismaModel>
+}
+
+export type EnumVolunteerApplicationStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.VolunteerApplicationStatus | Prisma.EnumVolunteerApplicationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.VolunteerApplicationStatus[] | Prisma.ListEnumVolunteerApplicationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VolunteerApplicationStatus[] | Prisma.ListEnumVolunteerApplicationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVolunteerApplicationStatusFilter<$PrismaModel> | $Enums.VolunteerApplicationStatus
+}
+
+export type EnumVolunteerApplicationStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.VolunteerApplicationStatus | Prisma.EnumVolunteerApplicationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.VolunteerApplicationStatus[] | Prisma.ListEnumVolunteerApplicationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VolunteerApplicationStatus[] | Prisma.ListEnumVolunteerApplicationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVolunteerApplicationStatusWithAggregatesFilter<$PrismaModel> | $Enums.VolunteerApplicationStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumVolunteerApplicationStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumVolunteerApplicationStatusFilter<$PrismaModel>
 }
 
 export type NestedStringFilter<$PrismaModel = never> = {
@@ -584,6 +618,23 @@ export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedDateTimeNullableFilter<$PrismaModel>
 }
 
+export type NestedEnumComplaintVolunteerStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.ComplaintVolunteerStatus | Prisma.EnumComplaintVolunteerStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ComplaintVolunteerStatus[] | Prisma.ListEnumComplaintVolunteerStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ComplaintVolunteerStatus[] | Prisma.ListEnumComplaintVolunteerStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumComplaintVolunteerStatusFilter<$PrismaModel> | $Enums.ComplaintVolunteerStatus
+}
+
+export type NestedEnumComplaintVolunteerStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.ComplaintVolunteerStatus | Prisma.EnumComplaintVolunteerStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.ComplaintVolunteerStatus[] | Prisma.ListEnumComplaintVolunteerStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.ComplaintVolunteerStatus[] | Prisma.ListEnumComplaintVolunteerStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumComplaintVolunteerStatusWithAggregatesFilter<$PrismaModel> | $Enums.ComplaintVolunteerStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumComplaintVolunteerStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumComplaintVolunteerStatusFilter<$PrismaModel>
+}
+
 export type NestedEnumPaymentStatusFilter<$PrismaModel = never> = {
   equals?: $Enums.PaymentStatus | Prisma.EnumPaymentStatusFieldRefInput<$PrismaModel>
   in?: $Enums.PaymentStatus[] | Prisma.ListEnumPaymentStatusFieldRefInput<$PrismaModel>
@@ -714,6 +765,23 @@ export type NestedEnumAuthProviderWithAggregatesFilter<$PrismaModel = never> = {
   _count?: Prisma.NestedIntFilter<$PrismaModel>
   _min?: Prisma.NestedEnumAuthProviderFilter<$PrismaModel>
   _max?: Prisma.NestedEnumAuthProviderFilter<$PrismaModel>
+}
+
+export type NestedEnumVolunteerApplicationStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.VolunteerApplicationStatus | Prisma.EnumVolunteerApplicationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.VolunteerApplicationStatus[] | Prisma.ListEnumVolunteerApplicationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VolunteerApplicationStatus[] | Prisma.ListEnumVolunteerApplicationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVolunteerApplicationStatusFilter<$PrismaModel> | $Enums.VolunteerApplicationStatus
+}
+
+export type NestedEnumVolunteerApplicationStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.VolunteerApplicationStatus | Prisma.EnumVolunteerApplicationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.VolunteerApplicationStatus[] | Prisma.ListEnumVolunteerApplicationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.VolunteerApplicationStatus[] | Prisma.ListEnumVolunteerApplicationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumVolunteerApplicationStatusWithAggregatesFilter<$PrismaModel> | $Enums.VolunteerApplicationStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumVolunteerApplicationStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumVolunteerApplicationStatusFilter<$PrismaModel>
 }
 
 

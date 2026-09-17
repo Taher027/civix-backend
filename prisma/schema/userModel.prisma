@@ -17,6 +17,7 @@ model User {
   deletedAt          DateTime?
   createdAt          DateTime     @default(now())
   updatedAt          DateTime     @updatedAt
+  volunteerProfile   VolunteerProfile?
   complaint           Complaint[]
   complaint_comments Complaint_Comment[]
   payments           Payment[]

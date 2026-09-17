@@ -38,3 +38,15 @@ enum PaymentStatus {
   FAILED
   CANCELLED
 }
+enum VolunteerApplicationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+enum ComplaintVolunteerStatus {
+  APPLIED
+  ACCEPTED
+  REJECTED
+  SUBMITTED
+  RESOLVED
+}

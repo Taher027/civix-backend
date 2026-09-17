@@ -286,6 +286,7 @@ export type UserWhereInput = {
   deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  volunteerProfile?: Prisma.XOR<Prisma.VolunteerProfileNullableScalarRelationFilter, Prisma.VolunteerProfileWhereInput> | null
   complaint?: Prisma.ComplaintListRelationFilter
   complaint_comments?: Prisma.Complaint_CommentListRelationFilter
   payments?: Prisma.PaymentListRelationFilter
@@ -310,6 +311,7 @@ export type UserOrderByWithRelationInput = {
   deletedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  volunteerProfile?: Prisma.VolunteerProfileOrderByWithRelationInput
   complaint?: Prisma.ComplaintOrderByRelationAggregateInput
   complaint_comments?: Prisma.Complaint_CommentOrderByRelationAggregateInput
   payments?: Prisma.PaymentOrderByRelationAggregateInput
@@ -337,6 +339,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   deletedAt?: Prisma.DateTimeNullableFilter<"User"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"User"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"User"> | Date | string
+  volunteerProfile?: Prisma.XOR<Prisma.VolunteerProfileNullableScalarRelationFilter, Prisma.VolunteerProfileWhereInput> | null
   complaint?: Prisma.ComplaintListRelationFilter
   complaint_comments?: Prisma.Complaint_CommentListRelationFilter
   payments?: Prisma.PaymentListRelationFilter
@@ -409,6 +412,7 @@ export type UserCreateInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  volunteerProfile?: Prisma.VolunteerProfileCreateNestedOneWithoutUserInput
   complaint?: Prisma.ComplaintCreateNestedManyWithoutUserInput
   complaint_comments?: Prisma.Complaint_CommentCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentCreateNestedManyWithoutDonerInput
@@ -433,6 +437,7 @@ export type UserUncheckedCreateInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  volunteerProfile?: Prisma.VolunteerProfileUncheckedCreateNestedOneWithoutUserInput
   complaint?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
   complaint_comments?: Prisma.Complaint_CommentUncheckedCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutDonerInput
@@ -457,6 +462,7 @@ export type UserUpdateInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  volunteerProfile?: Prisma.VolunteerProfileUpdateOneWithoutUserNestedInput
   complaint?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
   complaint_comments?: Prisma.Complaint_CommentUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutDonerNestedInput
@@ -481,6 +487,7 @@ export type UserUncheckedUpdateInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  volunteerProfile?: Prisma.VolunteerProfileUncheckedUpdateOneWithoutUserNestedInput
   complaint?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
   complaint_comments?: Prisma.Complaint_CommentUncheckedUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutDonerNestedInput
@@ -675,6 +682,20 @@ export type EnumAuthProviderFieldUpdateOperationsInput = {
   set?: $Enums.AuthProvider
 }
 
+export type UserCreateNestedOneWithoutVolunteerProfileInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutVolunteerProfileInput, Prisma.UserUncheckedCreateWithoutVolunteerProfileInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutVolunteerProfileInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutVolunteerProfileNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutVolunteerProfileInput, Prisma.UserUncheckedCreateWithoutVolunteerProfileInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutVolunteerProfileInput
+  upsert?: Prisma.UserUpsertWithoutVolunteerProfileInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutVolunteerProfileInput, Prisma.UserUpdateWithoutVolunteerProfileInput>, Prisma.UserUncheckedUpdateWithoutVolunteerProfileInput>
+}
+
 export type UserCreateWithoutComplaint_commentsInput = {
   id?: string
   name: string
@@ -694,6 +715,7 @@ export type UserCreateWithoutComplaint_commentsInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  volunteerProfile?: Prisma.VolunteerProfileCreateNestedOneWithoutUserInput
   complaint?: Prisma.ComplaintCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentCreateNestedManyWithoutDonerInput
 }
@@ -717,6 +739,7 @@ export type UserUncheckedCreateWithoutComplaint_commentsInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  volunteerProfile?: Prisma.VolunteerProfileUncheckedCreateNestedOneWithoutUserInput
   complaint?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutDonerInput
 }
@@ -756,6 +779,7 @@ export type UserUpdateWithoutComplaint_commentsInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  volunteerProfile?: Prisma.VolunteerProfileUpdateOneWithoutUserNestedInput
   complaint?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutDonerNestedInput
 }
@@ -779,6 +803,7 @@ export type UserUncheckedUpdateWithoutComplaint_commentsInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  volunteerProfile?: Prisma.VolunteerProfileUncheckedUpdateOneWithoutUserNestedInput
   complaint?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutDonerNestedInput
 }
@@ -802,6 +827,7 @@ export type UserCreateWithoutComplaintInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  volunteerProfile?: Prisma.VolunteerProfileCreateNestedOneWithoutUserInput
   complaint_comments?: Prisma.Complaint_CommentCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentCreateNestedManyWithoutDonerInput
 }
@@ -825,6 +851,7 @@ export type UserUncheckedCreateWithoutComplaintInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  volunteerProfile?: Prisma.VolunteerProfileUncheckedCreateNestedOneWithoutUserInput
   complaint_comments?: Prisma.Complaint_CommentUncheckedCreateNestedManyWithoutUserInput
   payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutDonerInput
 }
@@ -864,6 +891,7 @@ export type UserUpdateWithoutComplaintInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  volunteerProfile?: Prisma.VolunteerProfileUpdateOneWithoutUserNestedInput
   complaint_comments?: Prisma.Complaint_CommentUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUpdateManyWithoutDonerNestedInput
 }
@@ -887,6 +915,7 @@ export type UserUncheckedUpdateWithoutComplaintInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  volunteerProfile?: Prisma.VolunteerProfileUncheckedUpdateOneWithoutUserNestedInput
   complaint_comments?: Prisma.Complaint_CommentUncheckedUpdateManyWithoutUserNestedInput
   payments?: Prisma.PaymentUncheckedUpdateManyWithoutDonerNestedInput
 }
@@ -910,6 +939,7 @@ export type UserCreateWithoutPaymentsInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  volunteerProfile?: Prisma.VolunteerProfileCreateNestedOneWithoutUserInput
   complaint?: Prisma.ComplaintCreateNestedManyWithoutUserInput
   complaint_comments?: Prisma.Complaint_CommentCreateNestedManyWithoutUserInput
 }
@@ -933,6 +963,7 @@ export type UserUncheckedCreateWithoutPaymentsInput = {
   deletedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  volunteerProfile?: Prisma.VolunteerProfileUncheckedCreateNestedOneWithoutUserInput
   complaint?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
   complaint_comments?: Prisma.Complaint_CommentUncheckedCreateNestedManyWithoutUserInput
 }
@@ -972,6 +1003,7 @@ export type UserUpdateWithoutPaymentsInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  volunteerProfile?: Prisma.VolunteerProfileUpdateOneWithoutUserNestedInput
   complaint?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
   complaint_comments?: Prisma.Complaint_CommentUpdateManyWithoutUserNestedInput
 }
@@ -995,8 +1027,121 @@ export type UserUncheckedUpdateWithoutPaymentsInput = {
   deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  volunteerProfile?: Prisma.VolunteerProfileUncheckedUpdateOneWithoutUserNestedInput
   complaint?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
   complaint_comments?: Prisma.Complaint_CommentUncheckedUpdateManyWithoutUserNestedInput
+}
+
+export type UserCreateWithoutVolunteerProfileInput = {
+  id?: string
+  name: string
+  email: string
+  password?: string | null
+  emailVerified?: boolean
+  role?: $Enums.UserRole
+  phone?: string | null
+  city?: string | null
+  address?: string | null
+  avatar?: string | null
+  avatarPublicId?: string | null
+  status?: $Enums.UserStatus
+  googleId?: string | null
+  authProvider?: $Enums.AuthProvider
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  complaint?: Prisma.ComplaintCreateNestedManyWithoutUserInput
+  complaint_comments?: Prisma.Complaint_CommentCreateNestedManyWithoutUserInput
+  payments?: Prisma.PaymentCreateNestedManyWithoutDonerInput
+}
+
+export type UserUncheckedCreateWithoutVolunteerProfileInput = {
+  id?: string
+  name: string
+  email: string
+  password?: string | null
+  emailVerified?: boolean
+  role?: $Enums.UserRole
+  phone?: string | null
+  city?: string | null
+  address?: string | null
+  avatar?: string | null
+  avatarPublicId?: string | null
+  status?: $Enums.UserStatus
+  googleId?: string | null
+  authProvider?: $Enums.AuthProvider
+  isDeleted?: boolean
+  deletedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  complaint?: Prisma.ComplaintUncheckedCreateNestedManyWithoutUserInput
+  complaint_comments?: Prisma.Complaint_CommentUncheckedCreateNestedManyWithoutUserInput
+  payments?: Prisma.PaymentUncheckedCreateNestedManyWithoutDonerInput
+}
+
+export type UserCreateOrConnectWithoutVolunteerProfileInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutVolunteerProfileInput, Prisma.UserUncheckedCreateWithoutVolunteerProfileInput>
+}
+
+export type UserUpsertWithoutVolunteerProfileInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutVolunteerProfileInput, Prisma.UserUncheckedUpdateWithoutVolunteerProfileInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutVolunteerProfileInput, Prisma.UserUncheckedCreateWithoutVolunteerProfileInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutVolunteerProfileInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutVolunteerProfileInput, Prisma.UserUncheckedUpdateWithoutVolunteerProfileInput>
+}
+
+export type UserUpdateWithoutVolunteerProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarPublicId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  authProvider?: Prisma.EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  complaint?: Prisma.ComplaintUpdateManyWithoutUserNestedInput
+  complaint_comments?: Prisma.Complaint_CommentUpdateManyWithoutUserNestedInput
+  payments?: Prisma.PaymentUpdateManyWithoutDonerNestedInput
+}
+
+export type UserUncheckedUpdateWithoutVolunteerProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  emailVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  city?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  address?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatar?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  avatarPublicId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  googleId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  authProvider?: Prisma.EnumAuthProviderFieldUpdateOperationsInput | $Enums.AuthProvider
+  isDeleted?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  deletedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  complaint?: Prisma.ComplaintUncheckedUpdateManyWithoutUserNestedInput
+  complaint_comments?: Prisma.Complaint_CommentUncheckedUpdateManyWithoutUserNestedInput
+  payments?: Prisma.PaymentUncheckedUpdateManyWithoutDonerNestedInput
 }
 
 
@@ -1067,6 +1212,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   deletedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  volunteerProfile?: boolean | Prisma.User$volunteerProfileArgs<ExtArgs>
   complaint?: boolean | Prisma.User$complaintArgs<ExtArgs>
   complaint_comments?: boolean | Prisma.User$complaint_commentsArgs<ExtArgs>
   payments?: boolean | Prisma.User$paymentsArgs<ExtArgs>
@@ -1138,6 +1284,7 @@ export type UserSelectScalar = {
 
 export type UserOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "email" | "password" | "emailVerified" | "role" | "phone" | "city" | "address" | "avatar" | "avatarPublicId" | "status" | "googleId" | "authProvider" | "isDeleted" | "deletedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["user"]>
 export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  volunteerProfile?: boolean | Prisma.User$volunteerProfileArgs<ExtArgs>
   complaint?: boolean | Prisma.User$complaintArgs<ExtArgs>
   complaint_comments?: boolean | Prisma.User$complaint_commentsArgs<ExtArgs>
   payments?: boolean | Prisma.User$paymentsArgs<ExtArgs>
@@ -1149,6 +1296,7 @@ export type UserIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
 export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "User"
   objects: {
+    volunteerProfile: Prisma.$VolunteerProfilePayload<ExtArgs> | null
     complaint: Prisma.$ComplaintPayload<ExtArgs>[]
     complaint_comments: Prisma.$Complaint_CommentPayload<ExtArgs>[]
     payments: Prisma.$PaymentPayload<ExtArgs>[]
@@ -1566,6 +1714,7 @@ readonly fields: UserFieldRefs;
  */
 export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  volunteerProfile<T extends Prisma.User$volunteerProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$volunteerProfileArgs<ExtArgs>>): Prisma.Prisma__VolunteerProfileClient<runtime.Types.Result.GetResult<Prisma.$VolunteerProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   complaint<T extends Prisma.User$complaintArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$complaintArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplaintPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   complaint_comments<T extends Prisma.User$complaint_commentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$complaint_commentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$Complaint_CommentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   payments<T extends Prisma.User$paymentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$paymentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaymentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2006,6 +2155,25 @@ export type UserDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Internal
    * Limit how many Users to delete.
    */
   limit?: number
+}
+
+/**
+ * User.volunteerProfile
+ */
+export type User$volunteerProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the VolunteerProfile
+   */
+  select?: Prisma.VolunteerProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the VolunteerProfile
+   */
+  omit?: Prisma.VolunteerProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VolunteerProfileInclude<ExtArgs> | null
+  where?: Prisma.VolunteerProfileWhereInput
 }
 
 /**

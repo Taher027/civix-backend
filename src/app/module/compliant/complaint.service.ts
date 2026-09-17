@@ -22,6 +22,7 @@ const createComplaintToDB = async (
 			id: payload.categoryId,
 		},
 	});
+	console.log(existingCategory);
 	if (!existingCategory) {
 		throw new AppError(httpStatus.NOT_FOUND, "Category does not exists!");
 	}
