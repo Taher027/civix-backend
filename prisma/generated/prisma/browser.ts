@@ -38,10 +38,10 @@ export type Complaint = Prisma.ComplaintModel
  */
 export type ComplaintVolunteer = Prisma.ComplaintVolunteerModel
 /**
- * Model Payment
+ * Model Donate
  * 
  */
-export type Payment = Prisma.PaymentModel
+export type Donate = Prisma.DonateModel
 /**
  * Model User
  * 

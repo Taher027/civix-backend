@@ -401,7 +401,7 @@ export const ModelName = {
   Complaint_Comment: 'Complaint_Comment',
   Complaint: 'Complaint',
   ComplaintVolunteer: 'ComplaintVolunteer',
-  Payment: 'Payment',
+  Donate: 'Donate',
   User: 'User',
   VolunteerProfile: 'VolunteerProfile'
 } as const
@@ -419,7 +419,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "category" | "complaint_Comment" | "complaint" | "complaintVolunteer" | "payment" | "user" | "volunteerProfile"
+    modelProps: "category" | "complaint_Comment" | "complaint" | "complaintVolunteer" | "donate" | "user" | "volunteerProfile"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -719,77 +719,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    Payment: {
-      payload: Prisma.$PaymentPayload<ExtArgs>
-      fields: Prisma.PaymentFieldRefs
+    Donate: {
+      payload: Prisma.$DonatePayload<ExtArgs>
+      fields: Prisma.DonateFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.PaymentFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPayload> | null
+          args: Prisma.DonateFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonatePayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.PaymentFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPayload>
+          args: Prisma.DonateFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonatePayload>
         }
         findFirst: {
-          args: Prisma.PaymentFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPayload> | null
+          args: Prisma.DonateFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonatePayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.PaymentFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPayload>
+          args: Prisma.DonateFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonatePayload>
         }
         findMany: {
-          args: Prisma.PaymentFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPayload>[]
+          args: Prisma.DonateFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonatePayload>[]
         }
         create: {
-          args: Prisma.PaymentCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPayload>
+          args: Prisma.DonateCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonatePayload>
         }
         createMany: {
-          args: Prisma.PaymentCreateManyArgs<ExtArgs>
+          args: Prisma.DonateCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.PaymentCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPayload>[]
+          args: Prisma.DonateCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonatePayload>[]
         }
         delete: {
-          args: Prisma.PaymentDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPayload>
+          args: Prisma.DonateDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonatePayload>
         }
         update: {
-          args: Prisma.PaymentUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPayload>
+          args: Prisma.DonateUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonatePayload>
         }
         deleteMany: {
-          args: Prisma.PaymentDeleteManyArgs<ExtArgs>
+          args: Prisma.DonateDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.PaymentUpdateManyArgs<ExtArgs>
+          args: Prisma.DonateUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.PaymentUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPayload>[]
+          args: Prisma.DonateUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonatePayload>[]
         }
         upsert: {
-          args: Prisma.PaymentUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$PaymentPayload>
+          args: Prisma.DonateUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$DonatePayload>
         }
         aggregate: {
-          args: Prisma.PaymentAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregatePayment>
+          args: Prisma.DonateAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateDonate>
         }
         groupBy: {
-          args: Prisma.PaymentGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.PaymentGroupByOutputType>[]
+          args: Prisma.DonateGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DonateGroupByOutputType>[]
         }
         count: {
-          args: Prisma.PaymentCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.PaymentCountAggregateOutputType> | number
+          args: Prisma.DonateCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.DonateCountAggregateOutputType> | number
         }
       }
     }
@@ -1044,7 +1044,7 @@ export const ComplaintVolunteerScalarFieldEnum = {
 export type ComplaintVolunteerScalarFieldEnum = (typeof ComplaintVolunteerScalarFieldEnum)[keyof typeof ComplaintVolunteerScalarFieldEnum]
 
 
-export const PaymentScalarFieldEnum = {
+export const DonateScalarFieldEnum = {
   id: 'id',
   status: 'status',
   amount: 'amount',
@@ -1061,7 +1061,7 @@ export const PaymentScalarFieldEnum = {
   updatedAt: 'updatedAt'
 } as const
 
-export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
+export type DonateScalarFieldEnum = (typeof DonateScalarFieldEnum)[keyof typeof DonateScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {
@@ -1251,16 +1251,16 @@ export type ListEnumComplaintVolunteerStatusFieldRefInput<$PrismaModel> = FieldR
 
 
 /**
- * Reference to a field of type 'PaymentStatus'
+ * Reference to a field of type 'DonateStatus'
  */
-export type EnumPaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentStatus'>
+export type EnumDonateStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DonateStatus'>
     
 
 
 /**
- * Reference to a field of type 'PaymentStatus[]'
+ * Reference to a field of type 'DonateStatus[]'
  */
-export type ListEnumPaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'PaymentStatus[]'>
+export type ListEnumDonateStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DonateStatus[]'>
     
 
 
@@ -1523,7 +1523,7 @@ export type GlobalOmitConfig = {
   complaint_Comment?: Prisma.Complaint_CommentOmit
   complaint?: Prisma.ComplaintOmit
   complaintVolunteer?: Prisma.ComplaintVolunteerOmit
-  payment?: Prisma.PaymentOmit
+  donate?: Prisma.DonateOmit
   user?: Prisma.UserOmit
   volunteerProfile?: Prisma.VolunteerProfileOmit
 }

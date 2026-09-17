@@ -1,13 +1,13 @@
-model Payment {
+model Donate {
   id String @id @default(uuid())
 
-  status PaymentStatus @default(UNPAID)
+  status DonateStatus @default(UNPAID)
 
-  amount   Decimal @db.Decimal(10, 2) // 100.50
+  amount   Decimal @db.Decimal(10, 2) 
   currency String  @default("BDT")
 
   paymentGateway        String @default("bkash")
-  merchantInvoiceNumber String @unique // appointment id
+  merchantInvoiceNumber String @unique
 
   bkashPaymentId String? @unique
   bkashTrxId     String?
@@ -22,5 +22,5 @@ model Payment {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  @@map("payments")
+  @@map("donates")
 }

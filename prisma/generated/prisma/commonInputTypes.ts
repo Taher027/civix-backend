@@ -230,11 +230,11 @@ export type EnumComplaintVolunteerStatusWithAggregatesFilter<$PrismaModel = neve
   _max?: Prisma.NestedEnumComplaintVolunteerStatusFilter<$PrismaModel>
 }
 
-export type EnumPaymentStatusFilter<$PrismaModel = never> = {
-  equals?: $Enums.PaymentStatus | Prisma.EnumPaymentStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.PaymentStatus[] | Prisma.ListEnumPaymentStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.PaymentStatus[] | Prisma.ListEnumPaymentStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumPaymentStatusFilter<$PrismaModel> | $Enums.PaymentStatus
+export type EnumDonateStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.DonateStatus | Prisma.EnumDonateStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DonateStatus[] | Prisma.ListEnumDonateStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DonateStatus[] | Prisma.ListEnumDonateStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDonateStatusFilter<$PrismaModel> | $Enums.DonateStatus
 }
 
 export type DecimalFilter<$PrismaModel = never> = {
@@ -272,14 +272,14 @@ export type JsonNullableFilterBase<$PrismaModel = never> = {
   not?: runtime.InputJsonValue | Prisma.JsonFieldRefInput<$PrismaModel> | Prisma.JsonNullValueFilter
 }
 
-export type EnumPaymentStatusWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.PaymentStatus | Prisma.EnumPaymentStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.PaymentStatus[] | Prisma.ListEnumPaymentStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.PaymentStatus[] | Prisma.ListEnumPaymentStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumPaymentStatusWithAggregatesFilter<$PrismaModel> | $Enums.PaymentStatus
+export type EnumDonateStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DonateStatus | Prisma.EnumDonateStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DonateStatus[] | Prisma.ListEnumDonateStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DonateStatus[] | Prisma.ListEnumDonateStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDonateStatusWithAggregatesFilter<$PrismaModel> | $Enums.DonateStatus
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumPaymentStatusFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumPaymentStatusFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDonateStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDonateStatusFilter<$PrismaModel>
 }
 
 export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
@@ -635,11 +635,11 @@ export type NestedEnumComplaintVolunteerStatusWithAggregatesFilter<$PrismaModel 
   _max?: Prisma.NestedEnumComplaintVolunteerStatusFilter<$PrismaModel>
 }
 
-export type NestedEnumPaymentStatusFilter<$PrismaModel = never> = {
-  equals?: $Enums.PaymentStatus | Prisma.EnumPaymentStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.PaymentStatus[] | Prisma.ListEnumPaymentStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.PaymentStatus[] | Prisma.ListEnumPaymentStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumPaymentStatusFilter<$PrismaModel> | $Enums.PaymentStatus
+export type NestedEnumDonateStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.DonateStatus | Prisma.EnumDonateStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DonateStatus[] | Prisma.ListEnumDonateStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DonateStatus[] | Prisma.ListEnumDonateStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDonateStatusFilter<$PrismaModel> | $Enums.DonateStatus
 }
 
 export type NestedDecimalFilter<$PrismaModel = never> = {
@@ -653,14 +653,14 @@ export type NestedDecimalFilter<$PrismaModel = never> = {
   not?: Prisma.NestedDecimalFilter<$PrismaModel> | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
-export type NestedEnumPaymentStatusWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.PaymentStatus | Prisma.EnumPaymentStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.PaymentStatus[] | Prisma.ListEnumPaymentStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.PaymentStatus[] | Prisma.ListEnumPaymentStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumPaymentStatusWithAggregatesFilter<$PrismaModel> | $Enums.PaymentStatus
+export type NestedEnumDonateStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.DonateStatus | Prisma.EnumDonateStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.DonateStatus[] | Prisma.ListEnumDonateStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.DonateStatus[] | Prisma.ListEnumDonateStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumDonateStatusWithAggregatesFilter<$PrismaModel> | $Enums.DonateStatus
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumPaymentStatusFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumPaymentStatusFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumDonateStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumDonateStatusFilter<$PrismaModel>
 }
 
 export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {

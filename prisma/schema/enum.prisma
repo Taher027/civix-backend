@@ -32,7 +32,7 @@ enum Complaint_CommentStatus {
   REJECTED
   DELETED
 }
-enum PaymentStatus {
+enum DonateStatus {
   UNPAID
   PAID
   FAILED

@@ -66,14 +66,14 @@ export const Complaint_CommentStatus = {
 export type Complaint_CommentStatus = (typeof Complaint_CommentStatus)[keyof typeof Complaint_CommentStatus]
 
 
-export const PaymentStatus = {
+export const DonateStatus = {
   UNPAID: 'UNPAID',
   PAID: 'PAID',
   FAILED: 'FAILED',
   CANCELLED: 'CANCELLED'
 } as const
 
-export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]
+export type DonateStatus = (typeof DonateStatus)[keyof typeof DonateStatus]
 
 
 export const VolunteerApplicationStatus = {

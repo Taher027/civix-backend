@@ -20,7 +20,7 @@ model User {
   volunteerProfile   VolunteerProfile?
   complaint           Complaint[]
   complaint_comments Complaint_Comment[]
-  payments           Payment[]
+  donates          Donate[]
 
   @@unique([email])
   @@map("users")

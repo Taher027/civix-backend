@@ -55,7 +55,7 @@ export const ModelName = {
   Complaint_Comment: 'Complaint_Comment',
   Complaint: 'Complaint',
   ComplaintVolunteer: 'ComplaintVolunteer',
-  Payment: 'Payment',
+  Donate: 'Donate',
   User: 'User',
   VolunteerProfile: 'VolunteerProfile'
 } as const
@@ -140,7 +140,7 @@ export const ComplaintVolunteerScalarFieldEnum = {
 export type ComplaintVolunteerScalarFieldEnum = (typeof ComplaintVolunteerScalarFieldEnum)[keyof typeof ComplaintVolunteerScalarFieldEnum]
 
 
-export const PaymentScalarFieldEnum = {
+export const DonateScalarFieldEnum = {
   id: 'id',
   status: 'status',
   amount: 'amount',
@@ -157,7 +157,7 @@ export const PaymentScalarFieldEnum = {
   updatedAt: 'updatedAt'
 } as const
 
-export type PaymentScalarFieldEnum = (typeof PaymentScalarFieldEnum)[keyof typeof PaymentScalarFieldEnum]
+export type DonateScalarFieldEnum = (typeof DonateScalarFieldEnum)[keyof typeof DonateScalarFieldEnum]
 
 
 export const UserScalarFieldEnum = {
