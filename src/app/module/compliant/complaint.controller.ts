@@ -12,7 +12,12 @@ const createComplaint = catchAsync(async (req: Request, res: Response) => {
 		throw new AppError(httpStatus.UNAUTHORIZED, "Unauthorized Access!");
 	}
 	const payload = req.body;
-	const result = await complaintServices.createComplaintToDB(payload, user);
+	const complaintImages = (req.files as Express.Multer.File[]) ?? [];
+	const result = await complaintServices.createComplaintToDB(
+		payload,
+		complaintImages,
+		user,
+	);
 
 	sendResponse(res, {
 		success: true,

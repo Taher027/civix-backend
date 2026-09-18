@@ -4,9 +4,13 @@ import { auth } from "../../middleware/auth";
 import { UserRole } from "../../../../prisma/generated/prisma/enums";
 import { compaintZodSchemas } from "./complaint.validation";
 import { validateRequest } from "../../middleware/validateRequest";
+import { parseFormDataJson } from "../../middleware/parseFormDataJson";
+import { upload } from "../../lib/multer";
 const router = Router();
 router.post(
 	"/create-complaint",
+	upload.array("complaintImage", 5),
+	parseFormDataJson,
 	validateRequest(compaintZodSchemas.createComplaintSchema),
 	auth(UserRole.ADMIN, UserRole.VOLUNTEER, UserRole.CITIZEN),
 	complaintControllers.createComplaint,

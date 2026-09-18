@@ -12,9 +12,12 @@ import {
 	type Prisma,
 } from "../../../../prisma/generated/prisma/client";
 import type { TComplaintFilters } from "../../../shared/pick";
+import type { UploadApiResponse } from "cloudinary";
+import { cloudinary } from "../../lib/cloudinary";
 
 const createComplaintToDB = async (
 	payload: ICreateComplaintInput,
+	complaintImages: Express.Multer.File[],
 	user: RequestUser,
 ) => {
 	const existingCategory = await prisma.category.findFirst({
@@ -22,7 +25,6 @@ const createComplaintToDB = async (
 			id: payload.categoryId,
 		},
 	});
-	console.log(existingCategory);
 	if (!existingCategory) {
 		throw new AppError(httpStatus.NOT_FOUND, "Category does not exists!");
 	}
@@ -38,9 +40,45 @@ const createComplaintToDB = async (
 			"This compalint alreday added by you!",
 		);
 	}
+
+	// upload image to cloudinary
+	const uploadResults = await Promise.all(
+		(complaintImages ?? []).map((file) => {
+			return new Promise<UploadApiResponse>((resolve, reject) => {
+				cloudinary.uploader
+					.upload_stream(
+						{
+							resource_type: "auto",
+							folder: "complaint-solutions",
+						},
+						(error, result) => {
+							if (error) {
+								return reject(error);
+							}
+
+							if (!result) {
+								return reject(
+									new AppError(
+										httpStatus.INTERNAL_SERVER_ERROR,
+										"No result returned from Cloudinary",
+									),
+								);
+							}
+
+							resolve(result);
+						},
+					)
+					.end(file.buffer);
+			});
+		}),
+	);
+
+	const complaintImage = uploadResults.map((r) => r.secure_url);
+
 	const compalint = prisma.complaint.create({
 		data: {
 			...payload,
+			initialImages: complaintImage,
 			createdBy: user.userID,
 		},
 	});

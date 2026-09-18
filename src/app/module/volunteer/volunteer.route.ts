@@ -59,6 +59,9 @@ router.patch(
 	auth(UserRole.VOLUNTEER),
 	upload.array("solutionImages", 5),
 	parseFormDataJson,
+	validateRequest(
+		volunteerZodValidations.submitComplaintStatusValidationSchema,
+	),
 	volunteerControllers.submitComplaintStatus,
 );
 

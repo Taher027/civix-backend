@@ -22,5 +22,6 @@ export const submitComplaintStatusValidationSchema = z.object({
 export const volunteerZodValidations = {
 	zodVolunteerApplySchema,
 	zodVolunteerReviewSchema,
+	submitComplaintStatusValidationSchema,
 	zodComplaintVolunteerApplySchema,
 };
