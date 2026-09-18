@@ -9,9 +9,11 @@ const createComplaintComment = catchAsync(
 		const { complaintID } = req.params;
 		const user = req.user;
 		const userID = user?.userID;
+		const commentImages = (req.files as Express.Multer.File[]) ?? [];
 
 		const result = await complaintCommentServices.createComplaintCommentIntoDb({
 			...req.body,
+			commentImages,
 			complaintID,
 			userID,
 		});

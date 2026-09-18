@@ -1,21 +1,56 @@
+import type { UploadApiResponse } from "cloudinary";
 import { AppError } from "../../../utils/AppError";
+import { cloudinary } from "../../lib/cloudinary";
 import { prisma } from "../../lib/prisma";
 import httpStatus from "http-status";
 
 const createComplaintCommentIntoDb = async (payload: {
 	text: string;
-	imagesURL?: string[];
+	commentImages?: Express.Multer.File[];
 	userID: string;
 	complaintID: string;
 }) => {
 	await prisma.complaint.findUniqueOrThrow({
 		where: { id: payload.complaintID },
 	});
+	// upload image to cloudinary
+	const uploadResults = await Promise.all(
+		(payload.commentImages ?? []).map((file) => {
+			return new Promise<UploadApiResponse>((resolve, reject) => {
+				cloudinary.uploader
+					.upload_stream(
+						{
+							resource_type: "auto",
+							folder: "complaint-solutions",
+						},
+						(error, result) => {
+							if (error) {
+								return reject(error);
+							}
+
+							if (!result) {
+								return reject(
+									new AppError(
+										httpStatus.INTERNAL_SERVER_ERROR,
+										"No result returned from Cloudinary",
+									),
+								);
+							}
+
+							resolve(result);
+						},
+					)
+					.end(file.buffer);
+			});
+		}),
+	);
+
+	const complaintCommentImage = uploadResults.map((r) => r.secure_url);
 
 	const result = await prisma.complaint_Comment.create({
 		data: {
 			text: payload.text,
-			imagesURL: payload.imagesURL ?? [],
+			imagesURL: complaintCommentImage,
 			userID: payload.userID,
 			complaintID: payload.complaintID,
 		},
